@@ -8,9 +8,10 @@ void ofApp::setup(){
 	// optionally set the delimiter to something else.  The delimiter in the client and the server have to be the same, default being [/TCP]
 	TCP.setMessageDelimiter("\r\n");
 
+	filterData = true;
 	updateOscilloscope = true;
 	drawOscilloscope = true;
-	logData = true;
+	logData = false;
 	
 	//ofAddListener(httpUtils.newResponseEvent, this, &ofApp::newResponse);
 	//httpUtils.start();
@@ -152,7 +153,7 @@ void ofApp::draw(){
 			storeText.push_back(string());
 		}
 
-		// receive all the available messages, separated by \n
+		// receive all the available messages, separated by \r\n
 		string str;
 		string tmp;
 		do {
@@ -205,38 +206,38 @@ void ofApp::draw(){
 						for (int ch = 0; ch < data.size(); ch++)
 						{
 							try {
-								data.at(ch).at(d) = (float) json["chunk"][s]["data"][ch].asDouble();
+								data.at(ch).at(d) = (float)json["chunk"][s]["data"][ch].asDouble();
+								if (filterData)
+								{
+									data.at(ch).at(d) = filterHP.at(ch).update(data.at(ch).at(d));
+									data.at(ch).at(d) = filterNotch.at(ch).update(data.at(ch).at(d));
+									//data.at(ch).at(n) = filterLP.at(ch).update(data.at(ch).at(n));
+								}
+
 								if (logData)
 								{
-									logger.push(json["chunk"][s]["data"][ch].asString() + ",");
+									//logger.push(json["chunk"][s]["data"][ch].asString() + ",");
+									logger.push(ofToString(data.at(ch).at(d)) + ",");
 								}
 							}
 							catch (exception e) {
 								bool debug = true;
 							}
 						}
-						// increment the data pointer
+						// increment the fft buffer pointer
 						d++;
 
 						if (logData)
 						{
 							logger.push("\n");
 						}
-						if (d == fftBufferSize)
+						if (d >= fftBufferSize)
 						{
 							d = 0;
 
 							// if the buffer is full
 							for (int ch = 0; ch < data.size(); ch++)
 							{
-								for (int n = 0; n < data[ch].size(); n++)
-								{
-									// Filter data
-									data.at(ch).at(n) = filterHP.at(ch).update(data.at(ch).at(n));
-									data.at(ch).at(n) = filterNotch.at(ch).update(data.at(ch).at(n));
-									//data.at(ch).at(n) = filterLP.at(ch).update(data.at(ch).at(n));
-								}
-
 								fft->setSignal(data.at(ch));
 								float* curFft = fft->getAmplitude();
 								//memcpy(&fftData[ch][0], curFft, sizeof(float) * fftData[ch].size());
@@ -244,9 +245,9 @@ void ofApp::draw(){
 								{
 									// Smooth the FFT over time so that after X seconds only 20% "legacy" influence remains
 									float newDataWeight = 1.f - pow(10, log10(0.2) / (7 * Fs / fftBufferSize));
-									// Calculate the FFT power in dB for easier viewing
 									if (isfinite(fftData.at(ch).at(n)))
 									{
+										// Calculate the FFT power in dB for easier viewing
 										fftData.at(ch).at(n) = smoother(10.f * log10(curFft[n]), fftData.at(ch).at(n), newDataWeight);
 									}
 									else

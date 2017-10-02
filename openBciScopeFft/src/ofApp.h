@@ -66,6 +66,7 @@ class ofApp : public ofBaseApp{
 		bool isPaused;
 		bool updateOscilloscope;
 		bool drawOscilloscope;
+		bool filterData;
 
 		ofxMultiScope fftScopeWin;
 
