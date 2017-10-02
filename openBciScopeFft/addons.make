@@ -1,0 +1,6 @@
+ofxNetwork
+ofxBiquadFilter
+ofxFft
+ofxJSON
+ofxOscilloscope
+ofxThreadedLogger
