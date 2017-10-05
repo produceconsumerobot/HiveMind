@@ -46,12 +46,11 @@ void ofApp::setup(){
 	float yOffset = 0.f; // yOffset from the center of the scope window
 	ofPoint winSize = ofGetWindowSize();
 	ofRectangle scopeArea = ofRectangle(ofPoint(0, winSize.y / 4), ofPoint(winSize.x * 2 / 3, winSize.y));
-	scopeWin1 = ofxMultiScope(nScopes, scopeArea, legendFont); // Setup the multiScope panel
+	scopeWin1 = ofxMultiScope(nScopes, scopeArea, legendFont, 50); // Setup the multiScope panel
 	for (int ch = 0; ch < oscColors.size(); ch++)
 	{
 		scopeWin1.scopes.at(ch).setup(timeWindow, Fs, oscNames.at(ch), oscColors.at(ch), yScale, yOffset); // Setup each oscilloscope panel
 	}
-
 
 	// Allocate space for new data in form data[nVariables][nPoints]
 	data.resize(oscNames.size(), vector<float>(fftBufferSize, 0));
@@ -65,7 +64,7 @@ void ofApp::setup(){
 	fft = ofxFft::create(fftBufferSize, OF_FFT_WINDOW_HAMMING);
 	int nBins = fft->getBinFromFrequency(70, Fs);
 	scopeArea = ofRectangle(ofPoint(winSize.x * 2 / 3, winSize.y / 4), ofPoint(winSize.x, winSize.y));
-	scopeWinFFT1 = ofxMultiScope(nScopes, scopeArea, legendFont); // Setup the multiScope panel
+	scopeWinFFT1 = ofxMultiScope(nScopes, scopeArea, legendFont, -1); // Setup the multiScope panel
 	fftData.resize(oscNames.size());
 	for (int ch = 0; ch < oscNames.size(); ch++)
 	{
@@ -243,10 +242,10 @@ void ofApp::draw(){
 								//memcpy(&fftData[ch][0], curFft, sizeof(float) * fftData[ch].size());
 								for (int n = 0; n < fftData[ch].size(); n++)
 								{
-									// Smooth the FFT over time so that after X seconds only 20% "legacy" influence remains
-									float newDataWeight = 1.f - pow(10, log10(0.2) / (7 * Fs / fftBufferSize));
 									if (isfinite(fftData.at(ch).at(n)))
 									{
+										// Smooth the FFT over time so that after X seconds only 20% "legacy" influence remains
+										float newDataWeight = 1.f - pow(10, log10(0.2) / (6 * Fs / fftBufferSize));
 										// Calculate the FFT power in dB for easier viewing
 										fftData.at(ch).at(n) = smoother(10.f * log10(curFft[n]), fftData.at(ch).at(n), newDataWeight);
 									}
