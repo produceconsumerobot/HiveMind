@@ -1,0 +1,7 @@
+ofxNetwork
+ofxBiquadFilter
+ofxFft
+ofxJSON
+ofxOpenBciWifi
+ofxOscilloscope
+ofxThreadedLogger

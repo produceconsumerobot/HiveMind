@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\ofApp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxBiquadFilter\src\ofxBiquadFilter.cpp">
+      <Filter>addons\ofxBiquadFilter\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxBiquadFilter\src\ofxBiquadFilterInstance.cpp">
+      <Filter>addons\ofxBiquadFilter\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFft\src\ofxEasyFft.cpp">
+      <Filter>addons\ofxFft\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFft\src\ofxFft.cpp">
+      <Filter>addons\ofxFft\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFft\src\ofxFftBasic.cpp">
+      <Filter>addons\ofxFft\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFft\src\ofxFftw.cpp">
+      <Filter>addons\ofxFft\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFft\src\ofxProcessFFT.cpp">
+      <Filter>addons\ofxFft\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFft\libs\kiss\kiss_fft.c">
+      <Filter>addons\ofxFft\libs\kiss</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFft\libs\kiss\kiss_fftr.c">
+      <Filter>addons\ofxFft\libs\kiss</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxJSON\src\ofxJSONElement.cpp">
+      <Filter>addons\ofxJSON\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxJSON\libs\jsoncpp\src\jsoncpp.cpp">
+      <Filter>addons\ofxJSON\libs\jsoncpp\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOpenBciWifi\src\ofxOpenBciWifi.cpp">
+      <Filter>addons\ofxOpenBciWifi\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOscilloscope\src\ofxOscilloscope.cpp">
+      <Filter>addons\ofxOscilloscope\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxThreadedLogger\src\ofxThreadedLogger.cpp">
+      <Filter>addons\ofxThreadedLogger\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HiveMind.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxTCPClient.cpp">
+      <Filter>addons\ofxNetwork\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxTCPManager.cpp">
+      <Filter>addons\ofxNetwork\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxTCPServer.cpp">
+      <Filter>addons\ofxNetwork\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxUDPManager.cpp">
+      <Filter>addons\ofxNetwork\src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{d8376475-7454-4a24-b08a-aac121d3ad6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons">
+      <UniqueIdentifier>{7d9dd6eb-264e-486f-b06f-19b06a95fb6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxBiquadFilter">
+      <UniqueIdentifier>{46ea598e-b665-4b1d-aab1-eb6f4f4249c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxBiquadFilter\src">
+      <UniqueIdentifier>{848001b5-3f88-4824-b048-5b6ff1ffb173}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxFft">
+      <UniqueIdentifier>{41ba7fe5-2921-4ccc-adb5-9606c89664ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxFft\src">
+      <UniqueIdentifier>{fb5e3df6-b19d-4884-b26f-06d9dec5d6f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxFft\libs">
+      <UniqueIdentifier>{b5b781e8-e535-48e3-8c8f-bf56de1fe96e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxFft\libs\fftw">
+      <UniqueIdentifier>{219cd8c3-25c9-4cb8-b392-7413ee6063b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxFft\libs\fftw\include">
+      <UniqueIdentifier>{d15c283f-8daa-438b-bc32-bae79b100cc6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxFft\libs\kiss">
+      <UniqueIdentifier>{22e2f640-11cc-4801-ac8f-97f388b35e18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxJSON">
+      <UniqueIdentifier>{dfb8f9a9-2fc5-4731-9950-d025b5dc8302}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxJSON\src">
+      <UniqueIdentifier>{9d8f229b-449f-4e40-8030-98c8616fe6ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxJSON\libs">
+      <UniqueIdentifier>{d7258327-3270-44bb-a5a1-be322ac792ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxJSON\libs\jsoncpp">
+      <UniqueIdentifier>{f756df7c-207b-45aa-bade-c57ec57d9844}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxJSON\libs\jsoncpp\include">
+      <UniqueIdentifier>{e0f8398c-0c93-4c24-bb55-4f415373087f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxJSON\libs\jsoncpp\include\json">
+      <UniqueIdentifier>{896bd2b4-d145-4900-b481-cd6c9f3aa40a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxJSON\libs\jsoncpp\src">
+      <UniqueIdentifier>{9d89c3e7-67be-4fa9-87f6-df63c2cfa2c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxOpenBciWifi">
+      <UniqueIdentifier>{1f4f1d01-6e5e-428b-93b8-ab747f12afcc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxOpenBciWifi\src">
+      <UniqueIdentifier>{d018f8e4-c406-4682-9dcb-73aabd94875a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxOscilloscope">
+      <UniqueIdentifier>{c400a767-01f3-468b-98c0-b335a6e62052}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxOscilloscope\src">
+      <UniqueIdentifier>{4ed33194-0f63-442e-a55e-cacbb75c5c31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxThreadedLogger">
+      <UniqueIdentifier>{4a05b73f-25e6-4cb8-8cfc-19370132a83b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxThreadedLogger\src">
+      <UniqueIdentifier>{44c1234e-8364-4cf0-81e9-735bf854a313}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxNetwork">
+      <UniqueIdentifier>{457996e7-671f-4e10-a940-a8fc705a5785}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxNetwork\src">
+      <UniqueIdentifier>{83cf3312-9b84-4daa-81ea-004e0a8675f1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\ofApp.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxBiquadFilter\src\ofxBiquadFilter.h">
+      <Filter>addons\ofxBiquadFilter\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxBiquadFilter\src\ofxBiquadFilterInstance.h">
+      <Filter>addons\ofxBiquadFilter\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFft\src\ofxEasyFft.h">
+      <Filter>addons\ofxFft\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFft\src\ofxFft.h">
+      <Filter>addons\ofxFft\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFft\src\ofxFftBasic.h">
+      <Filter>addons\ofxFft\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFft\src\ofxFftw.h">
+      <Filter>addons\ofxFft\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFft\src\ofxProcessFFT.h">
+      <Filter>addons\ofxFft\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFft\libs\fftw\include\fftw3.h">
+      <Filter>addons\ofxFft\libs\fftw\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFft\libs\kiss\kiss_fft.h">
+      <Filter>addons\ofxFft\libs\kiss</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFft\libs\kiss\kiss_fftr.h">
+      <Filter>addons\ofxFft\libs\kiss</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFft\libs\kiss\_kiss_fft_guts.h">
+      <Filter>addons\ofxFft\libs\kiss</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxJSON\src\ofxJSON.h">
+      <Filter>addons\ofxJSON\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxJSON\src\ofxJSONElement.h">
+      <Filter>addons\ofxJSON\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\include\json\json-forwards.h">
+      <Filter>addons\ofxJSON\libs\jsoncpp\include\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\include\json\json.h">
+      <Filter>addons\ofxJSON\libs\jsoncpp\include\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenBciWifi\src\ofxOpenBciWifi.h">
+      <Filter>addons\ofxOpenBciWifi\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOscilloscope\src\ofxOscilloscope.h">
+      <Filter>addons\ofxOscilloscope\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxThreadedLogger\src\ofxThreadedLogger.h">
+      <Filter>addons\ofxThreadedLogger\src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HiveMind.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxNetwork.h">
+      <Filter>addons\ofxNetwork\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxNetworkUtils.h">
+      <Filter>addons\ofxNetwork\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxTCPClient.h">
+      <Filter>addons\ofxNetwork\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxTCPManager.h">
+      <Filter>addons\ofxNetwork\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxTCPServer.h">
+      <Filter>addons\ofxNetwork\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxUDPManager.h">
+      <Filter>addons\ofxNetwork\src</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="icon.rc" />
+  </ItemGroup>
+</Project>
