@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "HiveMind.h"
+#include "ofxMidi.h"
 
 class ofApp : public ofBaseApp{
 
@@ -21,6 +22,7 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
+		void exit();
 
 		HiveMind hiveMind;
 		int nHeadsets;
@@ -46,5 +48,12 @@ class ofApp : public ofBaseApp{
 		//vector<ofRectangle> drawRect;
 
 		bool printRates;
+
+		// MIDI variables
+		ofxMidiOut midiout;
+		bool sendMidi;
+		int midiChannel;
+		vector<int> midiId;
+		int midiValue;
 		
 };

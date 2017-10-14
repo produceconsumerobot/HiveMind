@@ -67,6 +67,30 @@
     <ClCompile Include="src\ofxTimer.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxMidi\src\ofxBaseMidi.cpp">
+      <Filter>addons\ofxMidi\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxMidi\src\ofxMidi.cpp">
+      <Filter>addons\ofxMidi\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxMidi\src\ofxMidiIn.cpp">
+      <Filter>addons\ofxMidi\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxMidi\src\ofxMidiMessage.cpp">
+      <Filter>addons\ofxMidi\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxMidi\src\ofxMidiOut.cpp">
+      <Filter>addons\ofxMidi\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxMidi\src\desktop\ofxRtMidiIn.cpp">
+      <Filter>addons\ofxMidi\src\desktop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxMidi\src\desktop\ofxRtMidiOut.cpp">
+      <Filter>addons\ofxMidi\src\desktop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxMidi\libs\rtmidi\RtMidi.cpp">
+      <Filter>addons\ofxMidi\libs\rtmidi</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -143,6 +167,27 @@
     </Filter>
     <Filter Include="addons\ofxNetwork\src">
       <UniqueIdentifier>{83cf3312-9b84-4daa-81ea-004e0a8675f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxMidi">
+      <UniqueIdentifier>{b2b24188-6187-414a-a258-bbd78d6731ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxMidi\src">
+      <UniqueIdentifier>{860f9a74-9880-4bad-938c-ed08aec19368}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxMidi\src\desktop">
+      <UniqueIdentifier>{69185449-5eac-4242-8a91-7e2ef861c3ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxMidi\src\ios">
+      <UniqueIdentifier>{dbf4d29b-50e9-458b-8d1e-d76a614e4bdf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxMidi\libs">
+      <UniqueIdentifier>{4dac4288-c24c-4eb3-8c6d-eee004ed60bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxMidi\libs\pgmidi">
+      <UniqueIdentifier>{a630631c-11ba-4abd-9f9d-71eba03422ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxMidi\libs\rtmidi">
+      <UniqueIdentifier>{c84effc6-d081-4924-9308-57df143dd103}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -229,6 +274,66 @@
     </ClInclude>
     <ClInclude Include="src\ofxTimer.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\ofxBaseMidi.h">
+      <Filter>addons\ofxMidi\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\ofxMidi.h">
+      <Filter>addons\ofxMidi\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\ofxMidiConstants.h">
+      <Filter>addons\ofxMidi\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\ofxMidiIn.h">
+      <Filter>addons\ofxMidi\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\ofxMidiMessage.h">
+      <Filter>addons\ofxMidi\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\ofxMidiOut.h">
+      <Filter>addons\ofxMidi\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\ofxMidiTypes.h">
+      <Filter>addons\ofxMidi\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\desktop\ofxRtMidiIn.h">
+      <Filter>addons\ofxMidi\src\desktop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\desktop\ofxRtMidiOut.h">
+      <Filter>addons\ofxMidi\src\desktop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\ios\ofxPGMidiContext.h">
+      <Filter>addons\ofxMidi\src\ios</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\ios\ofxPGMidiDelegate.h">
+      <Filter>addons\ofxMidi\src\ios</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\ios\ofxPGMidiIn.h">
+      <Filter>addons\ofxMidi\src\ios</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\ios\ofxPGMidiOut.h">
+      <Filter>addons\ofxMidi\src\ios</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\ios\ofxPGMidiSourceDelegate.h">
+      <Filter>addons\ofxMidi\src\ios</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMidi\libs\pgmidi\iOSVersionDetection.h">
+      <Filter>addons\ofxMidi\libs\pgmidi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMidi\libs\pgmidi\PGArc.h">
+      <Filter>addons\ofxMidi\libs\pgmidi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMidi\libs\pgmidi\PGMidi.h">
+      <Filter>addons\ofxMidi\libs\pgmidi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMidi\libs\pgmidi\PGMidiAllSources.h">
+      <Filter>addons\ofxMidi\libs\pgmidi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMidi\libs\pgmidi\PGMidiFind.h">
+      <Filter>addons\ofxMidi\libs\pgmidi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMidi\libs\rtmidi\RtMidi.h">
+      <Filter>addons\ofxMidi\libs\rtmidi</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

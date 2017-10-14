@@ -21,6 +21,7 @@ void ofApp::setup(){
 	changeFrameCountMin = 3 * 1000000;
 	changeFrameCountMax = 3 * 1000000;
 
+	int midiId0 = 60;
 	for (int h = 0; h < nHeadsets; h++)
 	{
 		lastDrawMicros.push_back(ofGetElapsedTimeMicros());
@@ -31,7 +32,15 @@ void ofApp::setup(){
 		changeFrameCountInterval.push_back(ofRandom(changeFrameCountMin, changeFrameCountMax));
 		drawWhiteOn.push_back(true);
 		drawOn.push_back(true);
+		midiId.push_back(midiId0 + h);
 	}
+
+	// Midi
+	sendMidi = true;
+	midiChannel = 1;
+	midiValue = 100;
+	midiout.listPorts();
+	midiout.openPort(1);
 	
 	hiveMind.startThread();
 }
@@ -89,10 +98,18 @@ void ofApp::draw(){
 		if (drawWhiteOn.at(h) && drawOn.at(h))
 		{
 			ofSetColor(255, 255, 255);
+			if (sendMidi)
+			{
+				midiout.sendNoteOn(midiChannel, midiId.at(h), midiValue);
+			}
 		}
 		else
 		{
 			ofSetColor(0, 0, 0);
+			if (sendMidi)
+			{
+				midiout.sendNoteOff(midiChannel, midiId.at(h), midiValue);
+			}
 		}
 		ofDrawRectangle((float)h * ofGetWidth() / nHeadsets, 0.f,
 			(float)ofGetWidth() / nHeadsets, ofGetHeight());
@@ -149,6 +166,26 @@ void ofApp::keyReleased(int key){
 			drawOn.at(1) = true;
 		}
 	}
+
+	if (((char)key) == OF_KEY_BACKSPACE) {
+		sendMidi = !sendMidi;
+	}
+	if (((char)key) == '1') {
+		midiout.sendControlChange(midiChannel, midiId.at(0), midiValue);
+		printf("1");
+	}
+	if (((char)key) == '2') {
+		midiout.sendControlChange(midiChannel, midiId.at(0) + 1, midiValue);
+		printf("2");
+	}
+	if (((char)key) == '3') {
+		midiout.sendNoteOn(midiChannel, midiId.at(0) + 2, midiValue);
+		printf("3");
+	}
+	if (((char)key) == '4') {
+		midiout.sendNoteOff(midiChannel, midiId.at(0) + 3, midiValue);
+		printf("4");
+	}
 }
 
 //--------------------------------------------------------------
@@ -194,4 +231,18 @@ void ofApp::gotMessage(ofMessage msg){
 //--------------------------------------------------------------
 void ofApp::dragEvent(ofDragInfo dragInfo){ 
 
+}
+
+void ofApp::exit()
+{
+	if (midiout.isOpen())
+	{
+		for (int h = 0; h < nHeadsets; h++)
+		{
+			midiout.sendNoteOff(midiChannel, midiId.at(h), midiValue);
+		}
+		midiout.closePort();
+	}
+
+	hiveMind.waitForThread(true);
 }

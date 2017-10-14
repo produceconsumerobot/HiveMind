@@ -95,8 +95,12 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>..\..\..\addons\ofxBiquadFilter\src;..\..\..\addons\ofxFft\src;..\..\..\addons\ofxFft\libs\fftw\include;..\..\..\addons\ofxFft\libs\kiss;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxOpenBciWifi\src;..\..\..\addons\ofxOscilloscope\src;..\..\..\addons\ofxThreadedLogger\src;
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxNetwork\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\addons\ofxBiquadFilter\src;..\..\..\addons\ofxFft\src;..\..\..\addons\ofxFft\libs\fftw\include;..\..\..\addons\ofxFft\libs\kiss;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxOpenBciWifi\src;..\..\..\addons\ofxOscilloscope\src;..\..\..\addons\ofxThreadedLogger\src;C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxNetwork\src;
+C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\src;
+C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\src\desktop;
+C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\src\ios;
+C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\libs\pgmidi;
+C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\libs\rtmidi;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
@@ -115,8 +119,12 @@ C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxNetwork\src;%
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>..\..\..\addons\ofxBiquadFilter\src;..\..\..\addons\ofxFft\src;..\..\..\addons\ofxFft\libs\fftw\include;..\..\..\addons\ofxFft\libs\kiss;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxOpenBciWifi\src;..\..\..\addons\ofxOscilloscope\src;..\..\..\addons\ofxThreadedLogger\src;
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxNetwork\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\addons\ofxBiquadFilter\src;..\..\..\addons\ofxFft\src;..\..\..\addons\ofxFft\libs\fftw\include;..\..\..\addons\ofxFft\libs\kiss;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxOpenBciWifi\src;..\..\..\addons\ofxOscilloscope\src;..\..\..\addons\ofxThreadedLogger\src;C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxNetwork\src;
+C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\src;
+C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\src\desktop;
+C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\src\ios;
+C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\libs\pgmidi;
+C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\libs\rtmidi;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -135,8 +143,12 @@ C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxNetwork\src;%
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>..\..\..\addons\ofxBiquadFilter\src;..\..\..\addons\ofxFft\src;..\..\..\addons\ofxFft\libs\fftw\include;..\..\..\addons\ofxFft\libs\kiss;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxOpenBciWifi\src;..\..\..\addons\ofxOscilloscope\src;..\..\..\addons\ofxThreadedLogger\src;
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxNetwork\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\addons\ofxBiquadFilter\src;..\..\..\addons\ofxFft\src;..\..\..\addons\ofxFft\libs\fftw\include;..\..\..\addons\ofxFft\libs\kiss;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxOpenBciWifi\src;..\..\..\addons\ofxOscilloscope\src;..\..\..\addons\ofxThreadedLogger\src;C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxNetwork\src;
+C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\src;
+C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\src\desktop;
+C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\src\ios;
+C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\libs\pgmidi;
+C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\libs\rtmidi;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -158,8 +170,12 @@ C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxNetwork\src;%
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>..\..\..\addons\ofxBiquadFilter\src;..\..\..\addons\ofxFft\src;..\..\..\addons\ofxFft\libs\fftw\include;..\..\..\addons\ofxFft\libs\kiss;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxOpenBciWifi\src;..\..\..\addons\ofxOscilloscope\src;..\..\..\addons\ofxThreadedLogger\src;
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxNetwork\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\addons\ofxBiquadFilter\src;..\..\..\addons\ofxFft\src;..\..\..\addons\ofxFft\libs\fftw\include;..\..\..\addons\ofxFft\libs\kiss;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxOpenBciWifi\src;..\..\..\addons\ofxOscilloscope\src;..\..\..\addons\ofxThreadedLogger\src;C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxNetwork\src;
+C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\src;
+C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\src\desktop;
+C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\src\ios;
+C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\libs\pgmidi;
+C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\libs\rtmidi;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
@@ -186,6 +202,14 @@ C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxNetwork\src;%
     <ClCompile Include="..\..\..\addons\ofxFft\src\ofxProcessFFT.cpp" />
     <ClCompile Include="..\..\..\addons\ofxJSON\libs\jsoncpp\src\jsoncpp.cpp" />
     <ClCompile Include="..\..\..\addons\ofxJSON\src\ofxJSONElement.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxMidi\libs\rtmidi\RtMidi.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxMidi\src\desktop\ofxRtMidiIn.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxMidi\src\desktop\ofxRtMidiOut.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxMidi\src\ofxBaseMidi.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxMidi\src\ofxMidi.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxMidi\src\ofxMidiIn.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxMidi\src\ofxMidiMessage.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxMidi\src\ofxMidiOut.cpp" />
     <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxTCPClient.cpp" />
     <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxTCPManager.cpp" />
     <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxTCPServer.cpp" />
@@ -214,6 +238,26 @@ C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxNetwork\src;%
     <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\include\json\json.h" />
     <ClInclude Include="..\..\..\addons\ofxJSON\src\ofxJSON.h" />
     <ClInclude Include="..\..\..\addons\ofxJSON\src\ofxJSONElement.h" />
+    <ClInclude Include="..\..\..\addons\ofxMidi\libs\pgmidi\iOSVersionDetection.h" />
+    <ClInclude Include="..\..\..\addons\ofxMidi\libs\pgmidi\PGArc.h" />
+    <ClInclude Include="..\..\..\addons\ofxMidi\libs\pgmidi\PGMidi.h" />
+    <ClInclude Include="..\..\..\addons\ofxMidi\libs\pgmidi\PGMidiAllSources.h" />
+    <ClInclude Include="..\..\..\addons\ofxMidi\libs\pgmidi\PGMidiFind.h" />
+    <ClInclude Include="..\..\..\addons\ofxMidi\libs\rtmidi\RtMidi.h" />
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\desktop\ofxRtMidiIn.h" />
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\desktop\ofxRtMidiOut.h" />
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\ios\ofxPGMidiContext.h" />
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\ios\ofxPGMidiDelegate.h" />
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\ios\ofxPGMidiIn.h" />
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\ios\ofxPGMidiOut.h" />
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\ios\ofxPGMidiSourceDelegate.h" />
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\ofxBaseMidi.h" />
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\ofxMidi.h" />
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\ofxMidiConstants.h" />
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\ofxMidiIn.h" />
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\ofxMidiMessage.h" />
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\ofxMidiOut.h" />
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\ofxMidiTypes.h" />
     <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxNetwork.h" />
     <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxNetworkUtils.h" />
     <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxTCPClient.h" />
