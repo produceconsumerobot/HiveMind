@@ -4,8 +4,12 @@
 void ofApp::setup(){
 
 	// ** Setup OpenBCI **
-	openBci.setTcpPort(3000);
-	openBci.enableDataLogging(ofToDataPath(ofGetTimestampString("%Y-%m-%d-%H-%M-%S") + ".log"));
+	tcpPort = 3000;
+	openBci.setTcpPort(tcpPort);
+	openBci.enableDataLogging(ofToDataPath("logs/" + ofGetTimestampString("%Y-%m-%d-%H-%M-%S") + ".log"));
+
+	computerIp = "192.168.1.100";
+	openBciIps.push_back("192.168.1.101");
 
 	// ** Setup oscilloscopes **
 	nHeadsets = 2;
@@ -242,7 +246,45 @@ void ofApp::keyReleased(int key){
 	if (key == '2') {
 		selectedScope = 2;
 	}
-
+	if (key == 't')
+	{
+		for each (string ip in openBciIps)
+		{
+			openBciWifiTcp(computerIp, tcpPort, ip);
+		}
+	}
+	if (key == 'S')
+	{
+		// Start streaming data
+		for each (string ip in openBciIps)
+		{
+			openBciWifiStart(ip);
+		}
+	}
+	if (key == 's')
+	{
+		// Stop streaming data
+		for each (string ip in openBciIps)
+		{
+			openBciWifiStop(ip);
+		}
+	}
+	if (key == 'd')
+	{
+		// Turn on raw data sending from openBci Cyton boards
+		for each (string ip in openBciIps)
+		{
+			openBciWifiAnalogDataOn(ip);
+		}
+	}
+	if (key == '[')
+	{
+		// Turn on square wave data sending from openBci Cyton boards
+		for each (string ip in openBciIps)
+		{
+			openBciWifiSquareWaveOn(ip);
+		}
+	}
 }
 
 //--------------------------------------------------------------
@@ -288,4 +330,70 @@ void ofApp::gotMessage(ofMessage msg){
 //--------------------------------------------------------------
 void ofApp::dragEvent(ofDragInfo dragInfo){ 
 
+}
+
+
+void ofApp::openBciWifiTcp(string computerIp, int tcpPort, string openBciWifiIp)
+{
+	// ToDo: Integrate http methods into ofxOpenBciWifi
+
+	// Send desired parameters to setup openBciWifi boards via http post
+	//{
+	//	"ip": "192.168.1.100",
+	//	"port" : 3000,
+	//	"output" : "json",
+	//	"delimiter" : true,
+	//	"latency" : 15000,
+	//	"timestamps" : false,
+	//	"sample_numbers" : true
+	//}
+	string pyCmd = "python " + ofToDataPath("httpPostJson.py") + " http://" + openBciWifiIp + "/tcp"
+		+ " {"
+		+ "\\\"ip\\\":\\\"" + computerIp + "\\\","
+		+ "\\\"port\\\":" + ofToString(tcpPort) + ","
+		+ "\\\"output\\\":\\\"json\\\","
+		+ "\\\"delimiter\\\":true,"
+		+ "\\\"latency\\\":15000,"
+		+ "\\\"timestamps\\\":false,"
+		+ "\\\"sample_numbers\\\":false"
+		+ "}";
+	cout << pyCmd << endl;
+	system(pyCmd.c_str());
+}
+
+void ofApp::openBciWifiStart(string openBciWifiIp)
+{
+	// Start streaming data
+	string pyCmd = "python " + ofToDataPath("httpGet.py") + " http://" + openBciWifiIp + "/stream/start";
+	cout << pyCmd << endl;
+	system(pyCmd.c_str());
+}
+void ofApp::openBciWifiStop(string openBciWifiIp)
+{
+	// Stop streaming data
+	string pyCmd = "python " + ofToDataPath("httpGet.py") + " http://" + openBciWifiIp + "/stream/stop";
+	cout << pyCmd << endl;
+	system(pyCmd.c_str());
+}
+void ofApp::openBciWifiSquareWaveOn(string openBciWifiIp)
+{
+	// Turn on raw data sending from openBci Cyton boards
+	// {'command': '-'}
+	string pyCmd = "python " + ofToDataPath("httpPostJson.py") + " http://" + openBciWifiIp + "/command"
+		+ " {"
+		+ "\\\"command\\\":\\\"-\\\""
+		+ "}";
+	cout << pyCmd << endl;
+	system(pyCmd.c_str());
+}
+void ofApp::openBciWifiAnalogDataOn(string openBciWifiIp)
+{
+	// Turn on square wave data sending from openBci Cyton boards
+	// {'command': 'd'}
+	string pyCmd = "python " + ofToDataPath("httpPostJson.py") + " http://" + openBciWifiIp + "/command"
+		+ " {"
+		+ "\\\"command\\\":\\\"d\\\""
+		+ "}";
+	cout << pyCmd << endl;
+	system(pyCmd.c_str());
 }
