@@ -1,4 +1,5 @@
 #include "ofApp.h"
+#include "openBciWifiHttpUtils.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -333,67 +334,4 @@ void ofApp::dragEvent(ofDragInfo dragInfo){
 }
 
 
-void ofApp::openBciWifiTcp(string computerIp, int tcpPort, string openBciWifiIp)
-{
-	// ToDo: Integrate http methods into ofxOpenBciWifi
 
-	// Send desired parameters to setup openBciWifi boards via http post
-	//{
-	//	"ip": "192.168.1.100",
-	//	"port" : 3000,
-	//	"output" : "json",
-	//	"delimiter" : true,
-	//	"latency" : 15000,
-	//	"timestamps" : false,
-	//	"sample_numbers" : true
-	//}
-	string pyCmd = "python " + ofToDataPath("httpPostJson.py") + " http://" + openBciWifiIp + "/tcp"
-		+ " {"
-		+ "\\\"ip\\\":\\\"" + computerIp + "\\\","
-		+ "\\\"port\\\":" + ofToString(tcpPort) + ","
-		+ "\\\"output\\\":\\\"json\\\","
-		+ "\\\"delimiter\\\":true,"
-		+ "\\\"latency\\\":15000,"
-		+ "\\\"timestamps\\\":false,"
-		+ "\\\"sample_numbers\\\":false"
-		+ "}";
-	cout << pyCmd << endl;
-	system(pyCmd.c_str());
-}
-
-void ofApp::openBciWifiStart(string openBciWifiIp)
-{
-	// Start streaming data
-	string pyCmd = "python " + ofToDataPath("httpGet.py") + " http://" + openBciWifiIp + "/stream/start";
-	cout << pyCmd << endl;
-	system(pyCmd.c_str());
-}
-void ofApp::openBciWifiStop(string openBciWifiIp)
-{
-	// Stop streaming data
-	string pyCmd = "python " + ofToDataPath("httpGet.py") + " http://" + openBciWifiIp + "/stream/stop";
-	cout << pyCmd << endl;
-	system(pyCmd.c_str());
-}
-void ofApp::openBciWifiSquareWaveOn(string openBciWifiIp)
-{
-	// Turn on raw data sending from openBci Cyton boards
-	// {'command': '-'}
-	string pyCmd = "python " + ofToDataPath("httpPostJson.py") + " http://" + openBciWifiIp + "/command"
-		+ " {"
-		+ "\\\"command\\\":\\\"-\\\""
-		+ "}";
-	cout << pyCmd << endl;
-	system(pyCmd.c_str());
-}
-void ofApp::openBciWifiAnalogDataOn(string openBciWifiIp)
-{
-	// Turn on square wave data sending from openBci Cyton boards
-	// {'command': 'd'}
-	string pyCmd = "python " + ofToDataPath("httpPostJson.py") + " http://" + openBciWifiIp + "/command"
-		+ " {"
-		+ "\\\"command\\\":\\\"d\\\""
-		+ "}";
-	cout << pyCmd << endl;
-	system(pyCmd.c_str());
-}

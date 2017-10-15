@@ -22,11 +22,11 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
-		void openBciWifiTcp(string computerIp, int tcpPort, string openBciWifiIp);
-		void openBciWifiStart(string openBciWifiIp);
-		void openBciWifiStop(string openBciWifiIp);
-		void openBciWifiSquareWaveOn(string openBciWifiIp);
-		void openBciWifiAnalogDataOn(string openBciWifiIp);
+		//void openBciWifiTcp(string computerIp, int tcpPort, string openBciWifiIp);
+		//void openBciWifiStart(string openBciWifiIp);
+		//void openBciWifiStop(string openBciWifiIp);
+		//void openBciWifiSquareWaveOn(string openBciWifiIp);
+		//void openBciWifiAnalogDataOn(string openBciWifiIp);
 
 
 		ofxOpenBciWifi openBci;

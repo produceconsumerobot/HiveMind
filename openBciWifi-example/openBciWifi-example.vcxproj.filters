@@ -215,6 +215,9 @@
     <ClInclude Include="..\..\..\addons\ofxOpenBciWifi\src\ofxOpenBciWifi.h">
       <Filter>addons\ofxOpenBciWifi\src</Filter>
     </ClInclude>
+    <ClInclude Include="src\openBciWifiHttpUtils.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
