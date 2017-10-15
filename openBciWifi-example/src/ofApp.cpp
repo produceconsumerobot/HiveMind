@@ -11,6 +11,7 @@ void ofApp::setup(){
 
 	computerIp = "192.168.1.100";
 	openBciIps.push_back("192.168.1.101");
+	openBciIps.push_back("192.168.1.102");
 
 	// ** Setup oscilloscopes **
 	nHeadsets = 2;
@@ -252,9 +253,10 @@ void ofApp::keyReleased(int key){
 		for each (string ip in openBciIps)
 		{
 			openBciWifiTcp(computerIp, tcpPort, ip);
+			Sleep(1000);
 		}
 	}
-	if (key == 'S')
+	if (key == 's')
 	{
 		// Start streaming data
 		for each (string ip in openBciIps)
@@ -262,7 +264,7 @@ void ofApp::keyReleased(int key){
 			openBciWifiStart(ip);
 		}
 	}
-	if (key == 's')
+	if (key == 'S')
 	{
 		// Stop streaming data
 		for each (string ip in openBciIps)

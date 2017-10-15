@@ -38,9 +38,9 @@ static void openBciWifiTcp(string computerIp, int tcpPort, string openBciWifiIp)
 		+ "\\\"port\\\":" + ofToString(tcpPort) + ","
 		+ "\\\"output\\\":\\\"json\\\","
 		+ "\\\"delimiter\\\":true,"
-		+ "\\\"latency\\\":15000,"
+		+ "\\\"latency\\\":10000,"
 		+ "\\\"timestamps\\\":false,"
-		+ "\\\"sample_numbers\\\":false"
+		+ "\\\"sample_numbers\\\":true"
 		+ "}";
 #if defined(TARGET_OSX) || defined(TARGET_LINUX) 
 		pyCmd = pyCmd + " &";
