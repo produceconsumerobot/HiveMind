@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "HiveMind.h"
 #include "ofxMidi.h"
+#include "ofxStateMachine.h"
 
 class ofApp : public ofBaseApp{
 
@@ -55,5 +56,14 @@ class ofApp : public ofBaseApp{
 		int midiChannel;
 		vector<int> midiId;
 		int midiValue;
-		
+
+		StateMachine states;
+		ofImage titleScreen;
+		ofImage riskScreen;
+		ofImage descriptionScreen;
+		ofImage creditsScreen;
+
+		vector<ofxTimerMillis> flashTimers;
+
+		int flashState0;
 };

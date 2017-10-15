@@ -35,6 +35,48 @@ void ofApp::setup(){
 		midiId.push_back(midiId0 + h);
 	}
 
+	// Static Screens
+	titleScreen.load("screens/TitleScreen.png");
+	riskScreen.load("screens/RiskScreen.png");
+	descriptionScreen.load("screens/DescriptionScreen.png");
+	creditsScreen.load("screens/CreditsScreen.png");
+
+	flashState0 = 3;
+	//flashTimers.push_back(1.5 * 60 *1000);	// Left (Sean)
+	//flashTimers.push_back(0* 60 * 1000);	// Both
+	//flashTimers.push_back(2 * 60 * 1000);	// Right (Diego)
+	//flashTimers.push_back(0 * 60 * 1000);	// Both
+	//flashTimers.push_back(1 * 60 * 1000);	// Left (Sean)
+	//flashTimers.push_back(0.25 * 60 * 1000);// Both
+	//flashTimers.push_back(2 * 60 * 1000);	// Right (Diego)
+	//flashTimers.push_back(.5 * 60 * 1000);	// Both
+	//flashTimers.push_back(2 * 60 * 1000);	// Left (Sean)
+	//flashTimers.push_back(0.5 * 60 * 1000);	// Both
+	//flashTimers.push_back(0.25 * 60 * 1000);// Right (Diego)
+	//flashTimers.push_back(0.5 * 60 * 1000);	// Both
+	//flashTimers.push_back(0.5 * 60 * 1000);	// Left (Sean)
+	//flashTimers.push_back(2 * 60 * 1000);	// Both
+	//flashTimers.push_back(0.5 * 60 * 1000);	// Black
+
+	flashTimers.push_back(.1 * 60 * 1000);	// Left (Sean)
+	flashTimers.push_back(0 * 60 * 1000);	// Both
+	flashTimers.push_back(.1 * 60 * 1000);	// Right (Diego)
+	flashTimers.push_back(0 * 60 * 1000);	// Both
+	flashTimers.push_back(.1 * 60 * 1000);	// Left (Sean)
+	flashTimers.push_back(0.1 * 60 * 1000);// Both
+	flashTimers.push_back(.1 * 60 * 1000);	// Right (Diego)
+	flashTimers.push_back(.1 * 60 * 1000);	// Both
+	flashTimers.push_back(.1 * 60 * 1000);	// Left (Sean)
+	flashTimers.push_back(.1 * 60 * 1000);	// Both
+	flashTimers.push_back(.1 * 60 * 1000);// Right (Diego)
+	flashTimers.push_back(.1 * 60 * 1000);	// Both
+	flashTimers.push_back(.1 * 60 * 1000);	// Left (Sean)
+	flashTimers.push_back(.1 * 60 * 1000);	// Both
+	flashTimers.push_back(0.1 * 60 * 1000);	// Black
+
+	drawOn.at(0) = false;
+	drawOn.at(1) = false;
+
 	// Midi
 	sendMidi = true;
 	midiChannel = 1;
@@ -43,6 +85,8 @@ void ofApp::setup(){
 	midiout.openPort(1);
 	
 	hiveMind.startThread();
+
+	ofBackground(0, 0, 0);
 }
 
 //--------------------------------------------------------------
@@ -79,6 +123,222 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
 
+	if (states.state == 0)
+	{
+		float imageScaler = ofGetWindowHeight() / titleScreen.getHeight();
+		float imageXOffset = (ofGetWindowWidth() - titleScreen.getWidth() * imageScaler) / 2;
+		ofPushMatrix();
+		ofScale(imageScaler, imageScaler);
+		ofSetColor(255, 255, 255);
+		titleScreen.draw(imageXOffset,0);
+		ofPopMatrix();
+		drawOn.at(0) = false;
+		drawOn.at(1) = false;
+	}
+	else if (states.state == 1)
+	{
+		// risk screen
+		float imageScaler = ofGetWindowHeight() / titleScreen.getHeight();
+		float imageXOffset = (ofGetWindowWidth() - titleScreen.getWidth() * imageScaler) / 2;
+		ofPushMatrix();
+		ofScale(imageScaler, imageScaler);
+		ofSetColor(255, 255, 255);
+		riskScreen.draw(imageXOffset, 0);
+		ofPopMatrix();
+		drawOn.at(0) = false;
+		drawOn.at(1) = false;
+	}
+	else if (states.state == 2)
+	{
+		// description screen
+		float imageScaler = ofGetWindowHeight() / titleScreen.getHeight();
+		float imageXOffset = (ofGetWindowWidth() - titleScreen.getWidth() * imageScaler) / 2;
+		ofPushMatrix();
+		ofScale(imageScaler, imageScaler);
+		ofSetColor(255, 255, 255);
+		descriptionScreen.draw(imageXOffset, 0);
+		ofPopMatrix();
+		drawOn.at(0) = false;
+		drawOn.at(1) = false;
+	}
+	else if (states.state == flashState0)
+	{
+		// flashing
+		drawOn.at(0) = true;
+		drawOn.at(1) = false;
+		if (flashTimers.at(0).isElapsed())
+		{
+			states.next();
+			flashTimers.at(1).start();
+		}
+	}
+	else if (states.state == flashState0 + 1)
+	{
+		// flashing
+		drawOn.at(0) = true;
+		drawOn.at(1) = true;
+		if (flashTimers.at(1).isElapsed())
+		{
+			states.next();
+			flashTimers.at(2).start();
+		}
+	}
+	else if (states.state == flashState0 + 2)
+	{
+		// flashing
+		drawOn.at(0) = false;
+		drawOn.at(1) = true;
+		if (flashTimers.at(2).isElapsed())
+		{
+			states.next();
+			flashTimers.at(3).start();
+		}
+	}
+	else if (states.state == flashState0 + 3)
+	{
+		// flashing
+		drawOn.at(0) = true;
+		drawOn.at(1) = true;
+		if (flashTimers.at(3).isElapsed())
+		{
+			states.next();
+			flashTimers.at(4).start();
+		}
+	}
+	else if (states.state == flashState0 + 4)
+	{
+		// flashing
+		drawOn.at(0) = true;
+		drawOn.at(1) = false;
+		if (flashTimers.at(4).isElapsed())
+		{
+			states.next();
+			flashTimers.at(5).start();
+		}
+	}
+	else if (states.state == flashState0 + 5)
+	{
+		// flashing
+		drawOn.at(0) = true;
+		drawOn.at(1) = true;
+		if (flashTimers.at(5).isElapsed())
+		{
+			states.next();
+			flashTimers.at(6).start();
+		}
+	}
+	else if (states.state == flashState0 + 6)
+	{
+		// flashing
+		drawOn.at(0) = false;
+		drawOn.at(1) = true;
+		if (flashTimers.at(6).isElapsed())
+		{
+			states.next();
+			flashTimers.at(7).start();
+		}
+	}
+	else if (states.state == flashState0 + 7)
+	{
+		// flashing
+		drawOn.at(0) = true;
+		drawOn.at(1) = true;
+		if (flashTimers.at(7).isElapsed())
+		{
+			states.next();
+			flashTimers.at(8).start();
+		}
+	}
+	else if (states.state == flashState0 + 8)
+	{
+		// flashing
+		drawOn.at(0) = true;
+		drawOn.at(1) = false;
+		if (flashTimers.at(8).isElapsed())
+		{
+			states.next();
+			flashTimers.at(9).start();
+		}
+	}
+	else if (states.state == flashState0 + 9)
+	{
+		// flashing
+		drawOn.at(0) = true;
+		drawOn.at(1) = true;
+		if (flashTimers.at(9).isElapsed())
+		{
+			states.next();
+			flashTimers.at(10).start();
+		}
+	}
+	else if (states.state == flashState0 + 10)
+	{
+		// flashing
+		drawOn.at(0) = false;
+		drawOn.at(1) = true;
+		if (flashTimers.at(10).isElapsed())
+		{
+			states.next();
+			flashTimers.at(11).start();
+		}
+	}
+	else if (states.state == flashState0 + 11)
+	{
+		// flashing
+		drawOn.at(0) = true;
+		drawOn.at(1) = true;
+		if (flashTimers.at(11).isElapsed())
+		{
+			states.next();
+			flashTimers.at(12).start();
+		}
+	}
+	else if (states.state == flashState0 + 12)
+	{
+		// flashing
+		drawOn.at(0) = true;
+		drawOn.at(1) = false;
+		if (flashTimers.at(12).isElapsed())
+		{
+			states.next();
+			flashTimers.at(13).start();
+		}
+	}
+	else if (states.state == flashState0 + 13)
+	{
+		// flashing
+		drawOn.at(0) = true;
+		drawOn.at(1) = true;
+		if (flashTimers.at(13).isElapsed())
+		{
+			states.next();
+			flashTimers.at(14).start();
+		}
+	}
+	else if (states.state == flashState0 + 14)
+	{
+		// black screen
+		drawOn.at(0) = false;
+		drawOn.at(1) = false;
+		if (flashTimers.at(14).isElapsed())
+		{
+			states.next();
+		}
+	}
+	else if (states.state == flashState0 + 15)
+	{
+		// credits screen
+		float imageScaler = ofGetWindowHeight() / titleScreen.getHeight();
+		float imageXOffset = (ofGetWindowWidth() - titleScreen.getWidth() * imageScaler) / 2;
+		ofPushMatrix();
+		ofScale(imageScaler, imageScaler);
+		creditsScreen.draw(imageXOffset, 0);
+		ofPopMatrix();
+		drawOn.at(0) = false;
+		drawOn.at(1) = false;
+	}
+
+	// Handle flashing
 	for (int h = 0; h < nHeadsets; h++)
 	{
 		if (frameCount.at(h) >= targetFrameCount.at(h))
@@ -98,6 +358,8 @@ void ofApp::draw(){
 		if (drawWhiteOn.at(h) && drawOn.at(h))
 		{
 			ofSetColor(255, 255, 255);
+			ofDrawRectangle((float)h * ofGetWidth() / nHeadsets, 0.f,
+				(float)ofGetWidth() / nHeadsets, ofGetHeight());
 			if (sendMidi)
 			{
 				midiout.sendNoteOn(midiChannel, midiId.at(h), midiValue);
@@ -105,14 +367,12 @@ void ofApp::draw(){
 		}
 		else
 		{
-			ofSetColor(0, 0, 0);
+			//ofSetColor(0, 0, 0);
 			if (sendMidi)
 			{
 				midiout.sendNoteOff(midiChannel, midiId.at(h), midiValue);
 			}
 		}
-		ofDrawRectangle((float)h * ofGetWidth() / nHeadsets, 0.f,
-			(float)ofGetWidth() / nHeadsets, ofGetHeight());
 	}
 
 	if (printRates)
@@ -140,7 +400,30 @@ void ofApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
-	if (key == 'f')
+	if (key == 'q')
+	{
+		targetFrameCount.at(0) = 4;
+	}
+	if (key == 'w')
+	{
+		targetFrameCount.at(0) = 2;
+	}
+	if (key == 'e')
+	{
+		targetFrameCount.at(0) = 1;
+	}
+	if (key == 'a')
+	{
+		targetFrameCount.at(1) = 4;
+	}
+	if (key == 's')
+	{
+		targetFrameCount.at(1) = 2;
+	}	
+	if (key == 'd')
+	{
+		targetFrameCount.at(1) = 1;
+	}	if (key == 'f')
 	{
 		ofToggleFullscreen();
 	}
@@ -150,20 +433,14 @@ void ofApp::keyReleased(int key){
 	}
 	if (key == ' ')
 	{
-		if (drawOn.at(0) && drawOn.at(1))
+		states.next();
+		if (states.state == 1)
 		{
-			drawOn.at(0) = true;
-			drawOn.at(1) = false;
+			hiveMind.resetBandData();
 		}
-		else if (drawOn.at(0))
+		if (states.state == flashState0)
 		{
-			drawOn.at(0) = false;
-			drawOn.at(1) = true;
-		}
-		else if (drawOn.at(1))
-		{
-			drawOn.at(0) = true;
-			drawOn.at(1) = true;
+			flashTimers.at(0).start();
 		}
 	}
 
@@ -171,21 +448,38 @@ void ofApp::keyReleased(int key){
 		sendMidi = !sendMidi;
 	}
 	if (((char)key) == '1') {
-		midiout.sendControlChange(midiChannel, midiId.at(0), midiValue);
-		printf("1");
+		states.state = 0;	// Title Screen
 	}
 	if (((char)key) == '2') {
-		midiout.sendControlChange(midiChannel, midiId.at(0) + 1, midiValue);
-		printf("2");
+		states.state = 1;	// Risk Screen
 	}
 	if (((char)key) == '3') {
-		midiout.sendNoteOn(midiChannel, midiId.at(0) + 2, midiValue);
-		printf("3");
+		states.state = 2;	// Description Screen
 	}
 	if (((char)key) == '4') {
-		midiout.sendNoteOff(midiChannel, midiId.at(0) + 3, midiValue);
-		printf("4");
+		states.state = flashState0;	// Flashing
+		flashTimers.at(0).start();
 	}
+	if (((char)key) == '5') {
+		states.state = flashState0 + + flashTimers.size() - 1;	// Black -> Credits
+	}
+
+	//if (((char)key) == '1') {
+	//	midiout.sendControlChange(midiChannel, midiId.at(0), midiValue);
+	//	printf("1");
+	//}
+	//if (((char)key) == '2') {
+	//	midiout.sendControlChange(midiChannel, midiId.at(0) + 1, midiValue);
+	//	printf("2");
+	//}
+	//if (((char)key) == '3') {
+	//	midiout.sendNoteOn(midiChannel, midiId.at(0) + 2, midiValue);
+	//	printf("3");
+	//}
+	//if (((char)key) == '4') {
+	//	midiout.sendNoteOff(midiChannel, midiId.at(0) + 3, midiValue);
+	//	printf("4");
+	//}
 }
 
 //--------------------------------------------------------------
