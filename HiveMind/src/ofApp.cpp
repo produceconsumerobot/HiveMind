@@ -463,23 +463,6 @@ void ofApp::keyReleased(int key){
 	if (((char)key) == '5') {
 		states.state = flashState0 + + flashTimers.size() - 1;	// Black -> Credits
 	}
-
-	//if (((char)key) == '1') {
-	//	midiout.sendControlChange(midiChannel, midiId.at(0), midiValue);
-	//	printf("1");
-	//}
-	//if (((char)key) == '2') {
-	//	midiout.sendControlChange(midiChannel, midiId.at(0) + 1, midiValue);
-	//	printf("2");
-	//}
-	//if (((char)key) == '3') {
-	//	midiout.sendNoteOn(midiChannel, midiId.at(0) + 2, midiValue);
-	//	printf("3");
-	//}
-	//if (((char)key) == '4') {
-	//	midiout.sendNoteOff(midiChannel, midiId.at(0) + 3, midiValue);
-	//	printf("4");
-	//}
 }
 
 //--------------------------------------------------------------
