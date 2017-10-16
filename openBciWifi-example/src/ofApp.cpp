@@ -7,7 +7,7 @@ void ofApp::setup(){
 	// ** Setup OpenBCI **
 	tcpPort = 3000;
 	openBci.setTcpPort(tcpPort);
-	openBci.enableDataLogging(ofToDataPath("logs/" + ofGetTimestampString("%Y-%m-%d-%H-%M-%S") + ".log"));
+	//openBci.enableDataLogging(ofToDataPath("logs/" + ofGetTimestampString("%Y-%m-%d-%H-%M-%S") + ".log"));
 
 	computerIp = "192.168.1.100";
 	openBciIps.push_back("192.168.1.101");
@@ -81,10 +81,10 @@ void ofApp::setup(){
 	selectedScope = 0;
 
 	// Debug Logger
-	debugLogger.setDirPath("");
-	debugLogger.setFilename(ofToDataPath(ofGetTimestampString("%Y-%m-%d-%H-%M-%S") + ".debug_log"));
-	debugLoggingEnabled = false;
-	debugLogger.startThread();
+	//debugLogger.setDirPath("");
+	//debugLogger.setFilename(ofToDataPath(ofGetTimestampString("%Y-%m-%d-%H-%M-%S") + ".debug_log"));
+	//debugLoggingEnabled = false;
+	//debugLogger.startThread();
 
 	ofBackground(0, 0, 0);
 }
@@ -94,23 +94,9 @@ void ofApp::update(){
 
 	openBci.update();
 
-	stringData = openBci.getStringData();
-	//if (stringData.size() > 0)
-	//{
-	//	fftDelay.at(0) = 100000000000;
-	//}
-	//else
-	//{
-	//	fftDelay.at(0) = -100000000000;
-	//}
 	vector<string> ipAddresses = openBci.getHeadsetIpAddresses();
 	for (int h = 0; h < ipAddresses.size() && h < nHeadsets; h++)
 	{
-		if (debugLoggingEnabled)
-		{
-			debugLogger.push(stringData.at(h) + "\n");
-		}
-
 		vector<vector<float>> tempData = openBci.getData(ipAddresses.at(h));
 		vector<vector<float>> tempFftData;
 		if (openBci.isFftNew(ipAddresses.at(h)))
@@ -160,6 +146,11 @@ void ofApp::draw(){
 		{
 			string stringData = openBci.getStringData(ipAddresses.at(h));
 			ofDrawBitmapString(ipAddresses.at(h) + " JSON: " + stringData, 10, 50 + 15 * h);
+
+			if (debugLoggingEnabled)
+			{
+				debugLogger.push(stringData + "\n");
+			}
 		}
 		// OpenBCI Headset Data: ip
 		// FFT
@@ -253,7 +244,7 @@ void ofApp::keyReleased(int key){
 		for each (string ip in openBciIps)
 		{
 			openBciWifiTcp(computerIp, tcpPort, ip);
-			Sleep(1000);
+			Sleep(2000);
 		}
 	}
 	if (key == 's')
