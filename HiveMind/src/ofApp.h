@@ -66,4 +66,8 @@ class ofApp : public ofBaseApp{
 		vector<ofxTimerMillis> flashTimers;
 
 		int flashState0;
+
+		string computerIp;
+		vector<string> openBciIps;
+		int tcpPort;
 };

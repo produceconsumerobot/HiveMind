@@ -31,6 +31,7 @@ private:
 	vector<vector<float>> _eegBands;					// Headset x EEG Bands x Freq Min/Max
 	vector<vector<vector<float>>> _eegBandData;			// Headset x Channels x Bands
 	vector<vector<vector<float>>> _eegBaselineBandData;	// Headset x Channels x Bands
+	vector<vector<vector<float>>> _eegData;
 
 	vector<float> _maxNormBandValue;
 	int _dominantBand1;
@@ -51,7 +52,7 @@ private:
 
 public:
 
-	HiveMind();
+	HiveMind(int tcpPort = 3000);
 	~HiveMind();
 
 	//float getFftDelay(int headset);
@@ -65,6 +66,10 @@ public:
 
 	vector<float> getEegBandData(int headset);
 	vector<float> getEegBaselineBandData(int headset);
+
+	vector<vector<float>> getData(string ipAddress);
+
+	void setTcpPort(int port);
 
 	void resetBandData();
 };

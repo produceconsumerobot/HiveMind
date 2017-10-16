@@ -10,10 +10,10 @@
 
 #include "HiveMind.h"
 
-HiveMind::HiveMind()
+HiveMind::HiveMind(int tcpPort)
 {
-	_openBci.setTcpPort(3000);
-	_openBci.enableDataLogging(ofToDataPath(ofGetTimestampString("%Y-%m-%d-%H-%M-%S") + ".log"));
+	_openBci.setTcpPort(tcpPort);
+	//_openBci.enableDataLogging(ofToDataPath(ofGetTimestampString("%Y-%m-%d-%H-%M-%S") + ".log"));
 
 	_nHeadsets = 2;
 
@@ -89,6 +89,7 @@ void HiveMind::threadedFunction()
 		for (int h = 0; h < ipAddresses.size() && h < _nHeadsets; h++)
 		{
 			//cout << _openBci.getStringData(ipAddresses.at(h));
+			_eegData.at(h) = _openBci.getData(ipAddresses.at(h));
 
 			vector<vector<float>> tempFftData;
 			vector<int> tempDominantBand;
@@ -224,6 +225,25 @@ void HiveMind::resetBandData()
 {
 	_dataReset = true;
 	_dataIsReset = false;
+}
+
+vector<vector<float>> HiveMind::getData(string ipAddress)
+{
+	lock();
+	vector<string> ipAddresses = _openBci.getHeadsetIpAddresses();
+	for (int h = 0; h < ipAddresses.size(); h++)
+	{
+		if (ipAddress.compare(ipAddresses.at(h)) == 0)
+		{
+			return _eegData.at(h);
+		}
+	}
+	unlock();
+}
+
+void HiveMind::setTcpPort(int port)
+{
+	_openBci.setTcpPort(port);
 }
 
 

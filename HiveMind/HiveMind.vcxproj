@@ -271,6 +271,7 @@ C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\libs\rtm
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="src\ofxStateMachine.h" />
     <ClInclude Include="src\ofxTimer.h" />
+    <ClInclude Include="src\openBciWifiHttpUtils.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">

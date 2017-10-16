@@ -1,7 +1,15 @@
 #include "ofApp.h"
+#include "openBciWifiHttpUtils.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+
+	tcpPort = 3000;
+	computerIp = "192.168.1.100";
+	openBciIps.push_back("192.168.1.101");
+	openBciIps.push_back("192.168.1.102");
+
+	hiveMind.setTcpPort(tcpPort);
 
 	nHeadsets = 2;
 
@@ -400,30 +408,31 @@ void ofApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
-	if (key == 'q')
+	if (key == 'u')
 	{
 		targetFrameCount.at(0) = 4;
 	}
-	if (key == 'w')
+	if (key == 'i')
 	{
 		targetFrameCount.at(0) = 2;
 	}
-	if (key == 'e')
+	if (key == 'o')
 	{
 		targetFrameCount.at(0) = 1;
 	}
-	if (key == 'a')
+	if (key == 'j')
 	{
 		targetFrameCount.at(1) = 4;
 	}
-	if (key == 's')
+	if (key == 'k')
 	{
 		targetFrameCount.at(1) = 2;
 	}	
-	if (key == 'd')
+	if (key == 'l')
 	{
 		targetFrameCount.at(1) = 1;
-	}	if (key == 'f')
+	}	
+	if (key == 'f')
 	{
 		ofToggleFullscreen();
 	}
@@ -462,6 +471,55 @@ void ofApp::keyReleased(int key){
 	}
 	if (((char)key) == '5') {
 		states.state = flashState0 + + flashTimers.size() - 1;	// Black -> Credits
+	}
+	if (key == 't')
+	{
+		for each (string ip in openBciIps)
+		{
+			openBciWifiTcp(computerIp, tcpPort, ip);
+			Sleep(2000);
+		}
+	}
+	if (key == 's')
+	{
+		// Start streaming data
+		for each (string ip in openBciIps)
+		{
+			openBciWifiStart(ip);
+		}
+	}
+	if (key == 'S')
+	{
+		// Stop streaming data
+		for each (string ip in openBciIps)
+		{
+			openBciWifiStop(ip);
+		}
+	}
+	if (key == 'd')
+	{
+		// Turn on raw data sending from openBci Cyton boards
+		for each (string ip in openBciIps)
+		{
+			openBciWifiAnalogDataOn(ip);
+		}
+	}
+	if (key == '[')
+	{
+		// Turn on square wave data sending from openBci Cyton boards
+		for each (string ip in openBciIps)
+		{
+			openBciWifiSquareWaveOn(ip);
+		}
+	}
+	if (key == 'h')
+	{
+		if (openBciIps.size() == 2)
+		{
+			vector<string> openBciIpsTemp = openBciIps;
+			openBciIps.at(0) = openBciIpsTemp.at(1);
+			openBciIps.at(1) = openBciIpsTemp.at(0);
+		}
 	}
 }
 

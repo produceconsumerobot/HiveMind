@@ -335,6 +335,9 @@
     <ClInclude Include="..\..\..\addons\ofxMidi\libs\rtmidi\RtMidi.h">
       <Filter>addons\ofxMidi\libs\rtmidi</Filter>
     </ClInclude>
+    <ClInclude Include="src\openBciWifiHttpUtils.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
