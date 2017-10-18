@@ -15,6 +15,8 @@ HiveMind::HiveMind(int tcpPort)
 	_openBci.setTcpPort(tcpPort);
 	//_openBci.enableDataLogging(ofToDataPath(ofGetTimestampString("%Y-%m-%d-%H-%M-%S") + ".log"));
 
+	_openBci.enableLPFilter(30);
+
 	_nHeadsets = 2;
 
 	_eegChannels = {	// Headset x Channels
