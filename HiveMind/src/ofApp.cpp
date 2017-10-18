@@ -9,11 +9,13 @@ void ofApp::setup(){
 	openBciIps.push_back("192.168.1.101");
 	openBciIps.push_back("192.168.1.102");
 
-	hiveMind.setTcpPort(tcpPort);
-	reTcpDelay = 10 * 10000;
+	//hiveMind.setTcpPort(tcpPort);
+	reTcpDelay = 10 * 1000;
 	resetBandDataTimer.set(5000);
 
+
 	nHeadsets = 2;
+	swapHeadsets = false;
 
 	printRates = true;
 
@@ -87,14 +89,54 @@ void ofApp::setup(){
 	drawOn.at(0) = false;
 	drawOn.at(1) = false;
 
-	// Midi
+	// ** Midi **
 	sendMidi = true;
 	midiChannel = 1;
 	midiValue = 100;
 	midiout.listPorts();
 	midiout.openPort(1);
+
+	// ** Oscilloscopes **
+	drawOscilloscopes = true;
+	drawScopesAtEnd = true;
+	oscilloscopeAlpha = 100;
+	isPaused = false;
+	int Fs = 250;
+	ofTrueTypeFont legendFont;
+	legendFont.load("verdana.ttf", 7, true, true);
+	ofColor scopeColor(128, 128, 128);
+	std::vector<ofColor> oscColors;
+	nChan = 8;
+	for (int ch = 0; ch < nChan; ch++)
+	{
+		oscColors.push_back(scopeColor);
+	}
+	std::vector<string> oscNames = { "ch1", "ch2", "ch3", "ch4", "ch5", "ch6", "ch7", "ch8" };
+	float timeWindow = 5.f; // seconds
+	float yScale = 0.004f; // yScale multiplier
+	float yOffset = 0.f; // yOffset from the center of the scope window
+	winSize = ofGetWindowSize();
+	yTop = 30;
+	xGap = 20;
+	scopeWins.resize(nHeadsets);
+	ofRectangle scopeArea;
+	scopeArea = ofRectangle(ofPoint(0, yTop), ofPoint(winSize.x / 2 - xGap, winSize.y));
+	scopeWins.at(0) = ofxMultiScope(nChan, scopeArea, legendFont, 40); // Setup the multiScope panel
+	scopeWins.at(0).setOutlineColor(ofColor(0, 0, 0));
+	scopeArea = ofRectangle(ofPoint(winSize.x / 2 + xGap, yTop), ofPoint(winSize.x / 2 + winSize.x / 2, winSize.y));
+	scopeWins.at(1) = ofxMultiScope(nChan, scopeArea, legendFont, 40); // Setup the multiScope panel
+	scopeWins.at(1).setOutlineColor(ofColor(0, 0, 0));
+	for (int h = 0; h < nHeadsets; h++)
+	{
+		for (int ch = 0; ch < oscColors.size(); ch++)
+		{
+			scopeWins.at(h).scopes.at(ch).setup(timeWindow, Fs, oscNames.at(ch), oscColors.at(ch), yScale, yOffset); // Setup each oscilloscope panel
+		}
+	}
 	
 	hiveMind.startThread();
+
+	keyReleased('t');
 
 	ofBackground(0, 0, 0);
 }
@@ -121,11 +163,28 @@ void ofApp::update(){
 				cout << "h" << h << " bands: ";
 				for (int b = 0; b < eegBandData.size(); b++)
 				{
-					cout << eegBandData.at(b) << " / " << eegBaselineBandData.at(b) << ", ";
+					cout << (int) eegBandData.at(b) << " / " << (int) eegBaselineBandData.at(b) << ", ";
 				}
 				cout << endl;
 			}
 			changeFrameCountMicros.at(h) = ofGetElapsedTimeMicros();
+		}
+
+		if (drawOscilloscopes)
+		{
+			int hDraw = h;
+			if (swapHeadsets)
+			{
+				hDraw = (h + 1) % 2;
+			}
+			vector<vector<float>> tempData = hiveMind.getData(hDraw);
+			for (int ch = 0; ch < tempData.size() && ch < nChan; ch++)
+			{
+				if (!isPaused)
+				{
+					scopeWins.at(h).scopes.at(ch).updateData(tempData.at(ch));
+				}
+			}
 		}
 
 		if (hiveMind.getFftDelay(h) > reTcpDelay)
@@ -137,7 +196,9 @@ void ofApp::update(){
 		}
 		if (resetBandDataTimer.isElapsed())
 		{
+			// Renormalize FFT
 			hiveMind.resetBandData();
+			resetBandDataTimer.stop();
 		}
 	}
 
@@ -146,8 +207,30 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
 
+	// ** Handle Oscilloscopes **
+	if (drawOscilloscopes)
+	{
+		for (int h = 0; h < nHeadsets; h++)
+		{
+			int hDraw = h;
+			if (swapHeadsets)
+			{
+				hDraw = (h + 1) % 2;
+			}
+			ofPushMatrix();
+			ofDrawBitmapString("OpenBCI Headset " + ofToString(hDraw) + ": " + openBciIps.at(hDraw), ofGetWindowSize().x / 2 * h + 10, yTop - 20);
+			ofScale(ofGetWindowSize().x / winSize.x, ofGetWindowSize().y / winSize.y);
+			scopeWins.at(hDraw).plot();
+			ofPopMatrix();
+		}
+	}
+
+	// ** Handle App States ** 
 	if (states.state == 0)
 	{
+		// Title screen
+		ofSetColor(0, 0, 0, oscilloscopeAlpha);
+		ofDrawRectangle(0, 0, ofGetWindowWidth(), ofGetWindowHeight());
 		float imageScaler = ofGetWindowHeight() / titleScreen.getHeight();
 		float imageXOffset = (ofGetWindowWidth() - titleScreen.getWidth() * imageScaler) / 2;
 		ofPushMatrix();
@@ -161,6 +244,8 @@ void ofApp::draw(){
 	else if (states.state == 1)
 	{
 		// risk screen
+		ofSetColor(0, 0, 0, oscilloscopeAlpha);
+		ofDrawRectangle(0, 0, ofGetWindowWidth(), ofGetWindowHeight());
 		float imageScaler = ofGetWindowHeight() / titleScreen.getHeight();
 		float imageXOffset = (ofGetWindowWidth() - titleScreen.getWidth() * imageScaler) / 2;
 		ofPushMatrix();
@@ -174,6 +259,8 @@ void ofApp::draw(){
 	else if (states.state == 2)
 	{
 		// description screen
+		ofSetColor(0, 0, 0, oscilloscopeAlpha);
+		ofDrawRectangle(0, 0, ofGetWindowWidth(), ofGetWindowHeight());
 		float imageScaler = ofGetWindowHeight() / titleScreen.getHeight();
 		float imageXOffset = (ofGetWindowWidth() - titleScreen.getWidth() * imageScaler) / 2;
 		ofPushMatrix();
@@ -187,6 +274,7 @@ void ofApp::draw(){
 	else if (states.state == flashState0)
 	{
 		// flashing
+		drawOscilloscopes = false;
 		drawOn.at(0) = true;
 		drawOn.at(1) = false;
 		if (flashTimers.at(0).isElapsed())
@@ -341,6 +429,11 @@ void ofApp::draw(){
 	else if (states.state == flashState0 + 14)
 	{
 		// black screen
+		ofPushStyle();
+		ofSetColor(0, 0, 0, oscilloscopeAlpha);
+		ofDrawRectangle(0, 0, ofGetWindowWidth(), ofGetWindowHeight());
+		ofPopStyle();
+		drawOscilloscopes = drawScopesAtEnd;
 		drawOn.at(0) = false;
 		drawOn.at(1) = false;
 		if (flashTimers.at(14).isElapsed())
@@ -351,8 +444,13 @@ void ofApp::draw(){
 	else if (states.state == flashState0 + 15)
 	{
 		// credits screen
+		ofPushStyle();
+		ofSetColor(0, 0, 0, oscilloscopeAlpha);
+		ofDrawRectangle(0, 0, ofGetWindowWidth(), ofGetWindowHeight());
+		ofPopStyle();
 		float imageScaler = ofGetWindowHeight() / titleScreen.getHeight();
 		float imageXOffset = (ofGetWindowWidth() - titleScreen.getWidth() * imageScaler) / 2;
+		ofSetColor(255, 255, 255);
 		ofPushMatrix();
 		ofScale(imageScaler, imageScaler);
 		creditsScreen.draw(imageXOffset, 0);
@@ -361,7 +459,7 @@ void ofApp::draw(){
 		drawOn.at(1) = false;
 	}
 
-	// Handle flashing
+	// ** Handle flashing ** 
 	for (int h = 0; h < nHeadsets; h++)
 	{
 		if (frameCount.at(h) >= targetFrameCount.at(h))
@@ -378,14 +476,19 @@ void ofApp::draw(){
 		{
 			frameCount.at(h)++;
 		}
+		int hDraw = h;
+		if (swapHeadsets)
+		{
+			hDraw = (h + 1) % 2;
+		}
 		if (drawWhiteOn.at(h) && drawOn.at(h))
 		{
 			ofSetColor(255, 255, 255);
-			ofDrawRectangle((float)h * ofGetWidth() / nHeadsets, 0.f,
+			ofDrawRectangle((float)hDraw * ofGetWidth() / nHeadsets, 0.f,
 				(float)ofGetWidth() / nHeadsets, ofGetHeight());
 			if (sendMidi)
 			{
-				midiout.sendNoteOn(midiChannel, midiId.at(h), midiValue);
+				midiout.sendNoteOn(midiChannel, midiId.at(hDraw), midiValue);
 			}
 		}
 		else
@@ -393,7 +496,7 @@ void ofApp::draw(){
 			//ofSetColor(0, 0, 0);
 			if (sendMidi)
 			{
-				midiout.sendNoteOff(midiChannel, midiId.at(h), midiValue);
+				midiout.sendNoteOff(midiChannel, midiId.at(hDraw), midiValue);
 			}
 		}
 	}
@@ -485,14 +588,14 @@ void ofApp::keyReleased(int key){
 		flashTimers.at(0).start();
 	}
 	if (((char)key) == '5') {
-		states.state = flashState0 + + flashTimers.size() - 1;	// Black -> Credits
+		states.state = flashState0 + flashTimers.size() - 1;	// Black -> Credits
 	}
 	if (key == 't')
 	{
 		for each (string ip in openBciIps)
 		{
 			openBciWifiTcp(computerIp, tcpPort, ip);
-			Sleep(2000);
+			Sleep(3000);
 		}
 		resetBandDataTimer.start();
 	}
@@ -530,12 +633,64 @@ void ofApp::keyReleased(int key){
 	}
 	if (key == 'h')
 	{
-		if (openBciIps.size() == 2)
+		swapHeadsets = !swapHeadsets;
+		cout << "swapHeadsets=" << swapHeadsets << ": ";
+		for (int h = 0; h < openBciIps.size(); h++)
 		{
-			vector<string> openBciIpsTemp = openBciIps;
-			openBciIps.at(0) = openBciIpsTemp.at(1);
-			openBciIps.at(1) = openBciIpsTemp.at(0);
+			cout << openBciIps.at(h) << ", ";
 		}
+		cout << endl;
+		//if (openBciIps.size() == 2)
+		//{
+		//	vector<string> openBciIpsTemp = openBciIps;
+		//	openBciIps.at(0) = openBciIpsTemp.at(1);
+		//	openBciIps.at(1) = openBciIpsTemp.at(0);
+		//}
+	}
+
+	// ** Oscilloscope scaling **
+	// Increment the yScale
+	if (key == '+') {
+			for (int h = 0; h < nHeadsets; h++)
+			{
+				scopeWins.at(h).incrementYScale();
+			}
+	}
+	// Decrement the yScale
+	if ((key == '-') || (key == '_')) {
+			for (int h = 0; h < nHeadsets; h++)
+			{
+				scopeWins.at(h).decrementYScale();
+			}
+	}
+	// Increment the yOffset
+	if (key == 357) { // Up Arrow
+			for (int h = 0; h < nHeadsets; h++)
+			{
+				scopeWins.at(h).incrementYOffset();
+			}
+	}
+	// Decrement the yOffset
+	if (key == 359) { // Down Arrow
+			for (int h = 0; h < nHeadsets; h++)
+			{
+				scopeWins.at(h).decrementYOffset();
+			}
+	}
+	// Increment the timeWindow
+	if (key == 358) { // Right Arrow
+			for (int h = 0; h < nHeadsets; h++)
+			{
+				scopeWins.at(h).incrementTimeWindow();
+			}
+	}
+
+	// Decrement the timeWindow
+	if (key == 356) { // Left Arrow
+			for (int h = 0; h < nHeadsets; h++)
+			{
+				scopeWins.at(h).decrementTimeWindow();
+			}
 	}
 }
 
@@ -595,5 +750,5 @@ void ofApp::exit()
 		midiout.closePort();
 	}
 
-	hiveMind.waitForThread(true);
+	//hiveMind.waitForThread(true);
 }

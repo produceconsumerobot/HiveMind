@@ -29,7 +29,13 @@ void ofxTimerMillis::set(uint64_t milliseconds)
 
 void ofxTimerMillis::start()
 {
+	isStarted = true;
 	mStartTime = ofGetElapsedTimeMillis();
+}
+
+void ofxTimerMillis::stop()
+{
+	isStarted = false;
 }
 
 bool ofxTimerMillis::isElapsed()
@@ -39,7 +45,7 @@ bool ofxTimerMillis::isElapsed()
 
 bool ofxTimerMillis::isElapsed(uint64_t milliseconds)
 {
-	if (elapsedTime() > mSetTime)
+	if (isStarted && elapsedTime() > mSetTime)
 	{
 		return true;
 	}
@@ -75,7 +81,13 @@ void ofxTimerMicros::set(uint64_t microseconds)
 
 void ofxTimerMicros::start()
 {
+	isStarted = true;
 	mStartTime = ofGetElapsedTimeMicros();
+}
+
+void ofxTimerMicros::stop()
+{
+	isStarted = false;
 }
 
 bool ofxTimerMicros::isElapsed()
@@ -85,7 +97,7 @@ bool ofxTimerMicros::isElapsed()
 
 bool ofxTimerMicros::isElapsed(uint64_t microseconds)
 {
-	if (elapsedTime() > mSetTime)
+	if (isStarted && elapsedTime() > mSetTime)
 	{
 		return true;
 	}

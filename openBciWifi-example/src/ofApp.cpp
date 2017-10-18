@@ -244,7 +244,7 @@ void ofApp::keyReleased(int key){
 		for each (string ip in openBciIps)
 		{
 			openBciWifiTcp(computerIp, tcpPort, ip);
-			Sleep(2000);
+			Sleep(3000);
 		}
 	}
 	if (key == 's')

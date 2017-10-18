@@ -68,6 +68,7 @@ public:
 	vector<float> getEegBaselineBandData(int headset);
 
 	vector<vector<float>> getData(string ipAddress);
+	vector<vector<float>> HiveMind::getData(int headset);
 
 	void setTcpPort(int port);
 

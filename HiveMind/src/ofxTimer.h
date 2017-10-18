@@ -18,12 +18,14 @@ public:
 	ofxTimerMillis(uint64_t milliseconds);
 	void set(uint64_t milliseconds);
 	void start();
+	void stop();
 	bool isElapsed();
 	bool isElapsed(uint64_t milliseconds);
 	uint64_t elapsedTime();
 private:
 	uint64_t mStartTime;
 	uint64_t mSetTime;
+	bool isStarted;
 };
 
 class ofxTimerMicros
@@ -33,10 +35,12 @@ public:
 	ofxTimerMicros(uint64_t microseconds);
 	void set(uint64_t microseconds);
 	void start();
+	void stop();
 	bool isElapsed();
 	bool isElapsed(uint64_t microseconds);
 	uint64_t elapsedTime();
 private:
 	uint64_t mStartTime;
 	uint64_t mSetTime;
+	bool isStarted;
 };

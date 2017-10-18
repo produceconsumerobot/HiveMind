@@ -28,6 +28,7 @@ HiveMind::HiveMind(int tcpPort)
 		{16, 31}
 	};
 
+	_eegData.resize(_nHeadsets);
 	_eegBandData.resize(_nHeadsets);
 	_eegBaselineBandData.resize(_nHeadsets);
 	for (int h = 0; h < _nHeadsets; h++)
@@ -89,7 +90,21 @@ void HiveMind::threadedFunction()
 		for (int h = 0; h < ipAddresses.size() && h < _nHeadsets; h++)
 		{
 			//cout << _openBci.getStringData(ipAddresses.at(h));
-			_eegData.at(h) = _openBci.getData(ipAddresses.at(h));
+			// ToDo: buffer _eegData
+			//_eegData.at(h) = _openBci.getData(ipAddresses.at(h));
+			vector<vector<float>> tempData = _openBci.getData(ipAddresses.at(h));
+			if (_eegData.at(h).size() < tempData.size())
+			{
+				_eegData.at(h).resize(tempData.size());
+			}
+			for (int ch = 0; ch < tempData.size(); ch++)
+			{
+				for (int n = 0; n < tempData.at(ch).size(); n++)
+				{
+					// ToDo: Make this less horribly inefficient
+					_eegData.at(h).at(ch).push_back(tempData.at(ch).at(n));
+				}
+			}
 
 			vector<vector<float>> tempFftData;
 			vector<int> tempDominantBand;
@@ -227,18 +242,33 @@ void HiveMind::resetBandData()
 	_dataIsReset = false;
 }
 
+vector<vector<float>> HiveMind::getData(int headset)
+{
+	// ToDo: clear _eegData buffer
+	vector<vector<float>> returnData;
+	lock();
+	returnData = _eegData.at(headset);
+	_eegData.at(headset).clear();
+	unlock();
+	return returnData;
+}
+
 vector<vector<float>> HiveMind::getData(string ipAddress)
 {
+	// ToDo: clear _eegData buffer
+	vector<vector<float>> returnData;
 	lock();
 	vector<string> ipAddresses = _openBci.getHeadsetIpAddresses();
 	for (int h = 0; h < ipAddresses.size(); h++)
 	{
 		if (ipAddress.compare(ipAddresses.at(h)) == 0)
 		{
-			return _eegData.at(h);
+			returnData = _eegData.at(h);
+			_eegData.at(h).clear();
 		}
 	}
 	unlock();
+	return returnData;
 }
 
 void HiveMind::setTcpPort(int port)

@@ -4,6 +4,7 @@
 #include "HiveMind.h"
 #include "ofxMidi.h"
 #include "ofxStateMachine.h"
+#include "ofxOscilloscope.h"
 
 class ofApp : public ofBaseApp{
 
@@ -74,4 +75,17 @@ class ofApp : public ofBaseApp{
 		float reTcpDelay;
 
 		ofxTimerMillis resetBandDataTimer;
+
+		bool swapHeadsets;
+
+		// ** Oscilloscopes **
+		bool drawOscilloscopes;
+		bool drawScopesAtEnd;
+		float xGap;
+		float yTop;
+		vector<ofxMultiScope> scopeWins;
+		int nChan;
+		bool isPaused;
+		float oscilloscopeAlpha;
+		ofPoint winSize;
 };
