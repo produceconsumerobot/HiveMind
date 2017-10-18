@@ -70,4 +70,8 @@ class ofApp : public ofBaseApp{
 		string computerIp;
 		vector<string> openBciIps;
 		int tcpPort;
+
+		float reTcpDelay;
+
+		ofxTimerMillis resetBandDataTimer;
 };

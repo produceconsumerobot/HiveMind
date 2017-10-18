@@ -10,6 +10,8 @@ void ofApp::setup(){
 	openBciIps.push_back("192.168.1.102");
 
 	hiveMind.setTcpPort(tcpPort);
+	reTcpDelay = 10 * 10000;
+	resetBandDataTimer.set(5000);
 
 	nHeadsets = 2;
 
@@ -125,7 +127,20 @@ void ofApp::update(){
 			}
 			changeFrameCountMicros.at(h) = ofGetElapsedTimeMicros();
 		}
+
+		if (hiveMind.getFftDelay(h) > reTcpDelay)
+		{
+			// reestablish TCP link if lost for too long
+			openBciWifiTcp(computerIp, tcpPort, openBciIps.at(h));
+			openBciWifiStart(openBciIps.at(h));
+			resetBandDataTimer.start();
+		}
+		if (resetBandDataTimer.isElapsed())
+		{
+			hiveMind.resetBandData();
+		}
 	}
+
 }
 
 //--------------------------------------------------------------
@@ -479,6 +494,7 @@ void ofApp::keyReleased(int key){
 			openBciWifiTcp(computerIp, tcpPort, ip);
 			Sleep(2000);
 		}
+		resetBandDataTimer.start();
 	}
 	if (key == 's')
 	{
