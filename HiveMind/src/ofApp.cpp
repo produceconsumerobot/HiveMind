@@ -5,9 +5,9 @@
 void ofApp::setup(){
 
 	tcpPort = 3000;
-	computerIp = "192.168.1.100";
+	computerIp = "192.168.1.102";
+	openBciIps.push_back("192.168.1.100");
 	openBciIps.push_back("192.168.1.101");
-	openBciIps.push_back("192.168.1.102");
 
 	//hiveMind.setTcpPort(tcpPort);
 	reTcpDelay = 10 * 1000;
@@ -30,8 +30,8 @@ void ofApp::setup(){
 	uint64_t printFrameRateMillis;
 	float frameDelay;
 
-	changeFrameCountMin = 3 * 1000000;
-	changeFrameCountMax = 3 * 1000000;
+	changeFrameCountMin = 9 * 1000000;	// microseconds
+	changeFrameCountMax = 14 * 1000000;	// microseconds
 
 	int midiId0 = 60;
 	for (int h = 0; h < nHeadsets; h++)
@@ -54,37 +54,37 @@ void ofApp::setup(){
 	creditsScreen.load("screens/CreditsScreen.png");
 
 	flashState0 = 3;
-	//flashTimers.push_back(1.5 * 60 *1000);	// Left (Sean)
-	//flashTimers.push_back(0* 60 * 1000);	// Both
-	//flashTimers.push_back(2 * 60 * 1000);	// Right (Diego)
-	//flashTimers.push_back(0 * 60 * 1000);	// Both
-	//flashTimers.push_back(1 * 60 * 1000);	// Left (Sean)
-	//flashTimers.push_back(0.25 * 60 * 1000);// Both
-	//flashTimers.push_back(2 * 60 * 1000);	// Right (Diego)
-	//flashTimers.push_back(.5 * 60 * 1000);	// Both
-	//flashTimers.push_back(2 * 60 * 1000);	// Left (Sean)
-	//flashTimers.push_back(0.5 * 60 * 1000);	// Both
-	//flashTimers.push_back(0.25 * 60 * 1000);// Right (Diego)
-	//flashTimers.push_back(0.5 * 60 * 1000);	// Both
-	//flashTimers.push_back(0.5 * 60 * 1000);	// Left (Sean)
-	//flashTimers.push_back(2 * 60 * 1000);	// Both
-	//flashTimers.push_back(0.5 * 60 * 1000);	// Black
+	flashTimers.push_back(1.5 * 60 *1000);	// Left (Sean)
+	flashTimers.push_back(0* 60 * 1000);	// Both
+	flashTimers.push_back(1.5 * 60 * 1000);	// Right (Diego)
+	flashTimers.push_back(0 * 60 * 1000);	// Both
+	flashTimers.push_back(1 * 60 * 1000);	// Left (Sean)
+	flashTimers.push_back(0.25 * 60 * 1000);// Both
+	flashTimers.push_back(2 * 60 * 1000);	// Right (Diego)
+	flashTimers.push_back(.5 * 60 * 1000);	// Both
+	flashTimers.push_back(2 * 60 * 1000);	// Left (Sean)
+	flashTimers.push_back(1 * 60 * 1000);	// Both
+	flashTimers.push_back(0.25 * 60 * 1000);// Right (Diego)
+	flashTimers.push_back(0.5 * 60 * 1000);	// Both
+	flashTimers.push_back(0.5 * 60 * 1000);	// Left (Sean)
+	flashTimers.push_back(2 * 60 * 1000);	// Both
+	flashTimers.push_back(1.f / 6 * 60 * 1000);	// Black
 
-	flashTimers.push_back(.1 * 60 * 1000);	// Left (Sean)
-	flashTimers.push_back(0 * 60 * 1000);	// Both
-	flashTimers.push_back(.1 * 60 * 1000);	// Right (Diego)
-	flashTimers.push_back(0 * 60 * 1000);	// Both
-	flashTimers.push_back(.1 * 60 * 1000);	// Left (Sean)
-	flashTimers.push_back(0.1 * 60 * 1000);// Both
-	flashTimers.push_back(.1 * 60 * 1000);	// Right (Diego)
-	flashTimers.push_back(.1 * 60 * 1000);	// Both
-	flashTimers.push_back(.1 * 60 * 1000);	// Left (Sean)
-	flashTimers.push_back(.1 * 60 * 1000);	// Both
-	flashTimers.push_back(.1 * 60 * 1000);// Right (Diego)
-	flashTimers.push_back(.1 * 60 * 1000);	// Both
-	flashTimers.push_back(.1 * 60 * 1000);	// Left (Sean)
-	flashTimers.push_back(.1 * 60 * 1000);	// Both
-	flashTimers.push_back(0.1 * 60 * 1000);	// Black
+	//flashTimers.push_back(.1 * 60 * 1000);	// Left (Sean)
+	//flashTimers.push_back(0 * 60 * 1000);	// Both
+	//flashTimers.push_back(.1 * 60 * 1000);	// Right (Diego)
+	//flashTimers.push_back(0 * 60 * 1000);	// Both
+	//flashTimers.push_back(.1 * 60 * 1000);	// Left (Sean)
+	//flashTimers.push_back(0.1 * 60 * 1000);// Both
+	//flashTimers.push_back(.1 * 60 * 1000);	// Right (Diego)
+	//flashTimers.push_back(.1 * 60 * 1000);	// Both
+	//flashTimers.push_back(.1 * 60 * 1000);	// Left (Sean)
+	//flashTimers.push_back(.1 * 60 * 1000);	// Both
+	//flashTimers.push_back(.1 * 60 * 1000);// Right (Diego)
+	//flashTimers.push_back(.1 * 60 * 1000);	// Both
+	//flashTimers.push_back(.1 * 60 * 1000);	// Left (Sean)
+	//flashTimers.push_back(.1 * 60 * 1000);	// Both
+	//flashTimers.push_back(0.1 * 60 * 1000);	// Black
 
 	drawOn.at(0) = false;
 	drawOn.at(1) = false;
@@ -98,8 +98,9 @@ void ofApp::setup(){
 
 	// ** Oscilloscopes **
 	drawOscilloscopes = true;
+	oscilloscopesOn = true;
 	drawScopesAtEnd = true;
-	oscilloscopeAlpha = 100;
+	overlayAlpha = 128;
 	isPaused = false;
 	int Fs = 250;
 	ofTrueTypeFont legendFont;
@@ -208,7 +209,7 @@ void ofApp::update(){
 void ofApp::draw(){
 
 	// ** Handle Oscilloscopes **
-	if (drawOscilloscopes)
+	if (drawOscilloscopes && oscilloscopesOn)
 	{
 		for (int h = 0; h < nHeadsets; h++)
 		{
@@ -229,7 +230,7 @@ void ofApp::draw(){
 	if (states.state == 0)
 	{
 		// Title screen
-		ofSetColor(0, 0, 0, oscilloscopeAlpha);
+		ofSetColor(0, 0, 0, overlayAlpha);
 		ofDrawRectangle(0, 0, ofGetWindowWidth(), ofGetWindowHeight());
 		float imageScaler = ofGetWindowHeight() / titleScreen.getHeight();
 		float imageXOffset = (ofGetWindowWidth() - titleScreen.getWidth() * imageScaler) / 2;
@@ -244,7 +245,7 @@ void ofApp::draw(){
 	else if (states.state == 1)
 	{
 		// risk screen
-		ofSetColor(0, 0, 0, oscilloscopeAlpha);
+		ofSetColor(0, 0, 0, overlayAlpha);
 		ofDrawRectangle(0, 0, ofGetWindowWidth(), ofGetWindowHeight());
 		float imageScaler = ofGetWindowHeight() / titleScreen.getHeight();
 		float imageXOffset = (ofGetWindowWidth() - titleScreen.getWidth() * imageScaler) / 2;
@@ -259,7 +260,7 @@ void ofApp::draw(){
 	else if (states.state == 2)
 	{
 		// description screen
-		ofSetColor(0, 0, 0, oscilloscopeAlpha);
+		ofSetColor(0, 0, 0, overlayAlpha);
 		ofDrawRectangle(0, 0, ofGetWindowWidth(), ofGetWindowHeight());
 		float imageScaler = ofGetWindowHeight() / titleScreen.getHeight();
 		float imageXOffset = (ofGetWindowWidth() - titleScreen.getWidth() * imageScaler) / 2;
@@ -430,7 +431,7 @@ void ofApp::draw(){
 	{
 		// black screen
 		ofPushStyle();
-		ofSetColor(0, 0, 0, oscilloscopeAlpha);
+		ofSetColor(0, 0, 0, overlayAlpha);
 		ofDrawRectangle(0, 0, ofGetWindowWidth(), ofGetWindowHeight());
 		ofPopStyle();
 		drawOscilloscopes = drawScopesAtEnd;
@@ -445,7 +446,7 @@ void ofApp::draw(){
 	{
 		// credits screen
 		ofPushStyle();
-		ofSetColor(0, 0, 0, oscilloscopeAlpha);
+		ofSetColor(0, 0, 0, overlayAlpha);
 		ofDrawRectangle(0, 0, ofGetWindowWidth(), ofGetWindowHeight());
 		ofPopStyle();
 		float imageScaler = ofGetWindowHeight() / titleScreen.getHeight();
@@ -525,7 +526,7 @@ void ofApp::keyPressed(int key){
 }
 
 //--------------------------------------------------------------
-void ofApp::keyReleased(int key){
+void ofApp::keyReleased(int key) {
 	if (key == 'u')
 	{
 		targetFrameCount.at(0) = 4;
@@ -545,11 +546,11 @@ void ofApp::keyReleased(int key){
 	if (key == 'k')
 	{
 		targetFrameCount.at(1) = 2;
-	}	
+	}
 	if (key == 'l')
 	{
 		targetFrameCount.at(1) = 1;
-	}	
+	}
 	if (key == 'f')
 	{
 		ofToggleFullscreen();
@@ -651,46 +652,59 @@ void ofApp::keyReleased(int key){
 	// ** Oscilloscope scaling **
 	// Increment the yScale
 	if (key == '+') {
-			for (int h = 0; h < nHeadsets; h++)
-			{
-				scopeWins.at(h).incrementYScale();
-			}
+		for (int h = 0; h < nHeadsets; h++)
+		{
+			scopeWins.at(h).incrementYScale();
+		}
 	}
 	// Decrement the yScale
 	if ((key == '-') || (key == '_')) {
-			for (int h = 0; h < nHeadsets; h++)
-			{
-				scopeWins.at(h).decrementYScale();
-			}
+		for (int h = 0; h < nHeadsets; h++)
+		{
+			scopeWins.at(h).decrementYScale();
+		}
 	}
 	// Increment the yOffset
 	if (key == 357) { // Up Arrow
-			for (int h = 0; h < nHeadsets; h++)
-			{
-				scopeWins.at(h).incrementYOffset();
-			}
+		for (int h = 0; h < nHeadsets; h++)
+		{
+			scopeWins.at(h).incrementYOffset();
+		}
 	}
 	// Decrement the yOffset
 	if (key == 359) { // Down Arrow
-			for (int h = 0; h < nHeadsets; h++)
-			{
-				scopeWins.at(h).decrementYOffset();
-			}
+		for (int h = 0; h < nHeadsets; h++)
+		{
+			scopeWins.at(h).decrementYOffset();
+		}
 	}
 	// Increment the timeWindow
 	if (key == 358) { // Right Arrow
-			for (int h = 0; h < nHeadsets; h++)
-			{
-				scopeWins.at(h).incrementTimeWindow();
-			}
+		for (int h = 0; h < nHeadsets; h++)
+		{
+			scopeWins.at(h).incrementTimeWindow();
+		}
 	}
 
 	// Decrement the timeWindow
 	if (key == 356) { // Left Arrow
-			for (int h = 0; h < nHeadsets; h++)
-			{
-				scopeWins.at(h).decrementTimeWindow();
-			}
+		for (int h = 0; h < nHeadsets; h++)
+		{
+			scopeWins.at(h).decrementTimeWindow();
+		}
+	}
+	// Increment the overlayAlpha
+	if (key == 'A') {
+		overlayAlpha += 5;
+	}
+	// Decrement the overlayAlpha
+	if (key == 'a') {
+		overlayAlpha -= 5;
+	}
+
+	if (key == 'o')
+	{
+		oscilloscopesOn = !oscilloscopesOn;
 	}
 }
 

@@ -16,6 +16,7 @@ HiveMind::HiveMind(int tcpPort)
 	//_openBci.enableDataLogging(ofToDataPath(ofGetTimestampString("%Y-%m-%d-%H-%M-%S") + ".log"));
 
 	_openBci.enableLPFilter(30);
+	_openBci.enableNotchFilter(50);
 
 	_nHeadsets = 2;
 

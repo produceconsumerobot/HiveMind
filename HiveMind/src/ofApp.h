@@ -86,6 +86,8 @@ class ofApp : public ofBaseApp{
 		vector<ofxMultiScope> scopeWins;
 		int nChan;
 		bool isPaused;
-		float oscilloscopeAlpha;
+		float overlayAlpha;
 		ofPoint winSize;
+
+		bool oscilloscopesOn;
 };
