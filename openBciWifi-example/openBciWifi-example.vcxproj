@@ -95,8 +95,7 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>..\..\..\addons\ofxNetwork\src;..\..\..\addons\ofxBiquadFilter\src;..\..\..\addons\ofxFft\src;..\..\..\addons\ofxFft\libs\fftw\include;..\..\..\addons\ofxFft\libs\kiss;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxOscilloscope\src;..\..\..\addons\ofxThreadedLogger\src;
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxOpenBciWifi\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\addons\ofxNetwork\src;..\..\..\addons\ofxBiquadFilter\src;..\..\..\addons\ofxFft\src;..\..\..\addons\ofxFft\libs\fftw\include;..\..\..\addons\ofxFft\libs\kiss;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxOscilloscope\src;..\..\..\addons\ofxThreadedLogger\src;..\..\..\addons\ofxOpenBciWifi\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
@@ -115,8 +114,7 @@ C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxOpenBciWifi\s
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>..\..\..\addons\ofxNetwork\src;..\..\..\addons\ofxBiquadFilter\src;..\..\..\addons\ofxFft\src;..\..\..\addons\ofxFft\libs\fftw\include;..\..\..\addons\ofxFft\libs\kiss;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxOscilloscope\src;..\..\..\addons\ofxThreadedLogger\src;
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxOpenBciWifi\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\addons\ofxNetwork\src;..\..\..\addons\ofxBiquadFilter\src;..\..\..\addons\ofxFft\src;..\..\..\addons\ofxFft\libs\fftw\include;..\..\..\addons\ofxFft\libs\kiss;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxOscilloscope\src;..\..\..\addons\ofxThreadedLogger\src;..\..\..\addons\ofxOpenBciWifi\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -135,8 +133,7 @@ C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxOpenBciWifi\s
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>..\..\..\addons\ofxNetwork\src;..\..\..\addons\ofxBiquadFilter\src;..\..\..\addons\ofxFft\src;..\..\..\addons\ofxFft\libs\fftw\include;..\..\..\addons\ofxFft\libs\kiss;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxOscilloscope\src;..\..\..\addons\ofxThreadedLogger\src;
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxOpenBciWifi\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\addons\ofxNetwork\src;..\..\..\addons\ofxBiquadFilter\src;..\..\..\addons\ofxFft\src;..\..\..\addons\ofxFft\libs\fftw\include;..\..\..\addons\ofxFft\libs\kiss;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxOscilloscope\src;..\..\..\addons\ofxThreadedLogger\src;..\..\..\addons\ofxOpenBciWifi\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -158,8 +155,7 @@ C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxOpenBciWifi\s
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>..\..\..\addons\ofxNetwork\src;..\..\..\addons\ofxBiquadFilter\src;..\..\..\addons\ofxFft\src;..\..\..\addons\ofxFft\libs\fftw\include;..\..\..\addons\ofxFft\libs\kiss;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxOscilloscope\src;..\..\..\addons\ofxThreadedLogger\src;
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxOpenBciWifi\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\addons\ofxNetwork\src;..\..\..\addons\ofxBiquadFilter\src;..\..\..\addons\ofxFft\src;..\..\..\addons\ofxFft\libs\fftw\include;..\..\..\addons\ofxFft\libs\kiss;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxOscilloscope\src;..\..\..\addons\ofxThreadedLogger\src;..\..\..\addons\ofxOpenBciWifi\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
