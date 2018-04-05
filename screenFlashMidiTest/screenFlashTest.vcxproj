@@ -96,12 +96,7 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <CompileAs>CompileAsCpp</CompileAs>
-      <AdditionalIncludeDirectories>
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\src;
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\src\desktop;
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\src\ios;
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\libs\pgmidi;
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\libs\rtmidi;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\addons\ofxMidi\src;..\..\..\addons\ofxMidi\src\desktop;..\..\..\addons\ofxMidi\src\ios;..\..\..\addons\ofxMidi\libs\pgmidi;..\..\..\addons\ofxMidi\libs\rtmidi;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -121,12 +116,7 @@ C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\libs\rtm
       <WarningLevel>Level3</WarningLevel>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\src;
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\src\desktop;
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\src\ios;
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\libs\pgmidi;
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\libs\rtmidi;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\addons\ofxMidi\src;..\..\..\addons\ofxMidi\src\desktop;..\..\..\addons\ofxMidi\src\ios;..\..\..\addons\ofxMidi\libs\pgmidi;..\..\..\addons\ofxMidi\libs\rtmidi;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -145,12 +135,7 @@ C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\libs\rtm
       <WarningLevel>Level3</WarningLevel>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\src;
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\src\desktop;
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\src\ios;
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\libs\pgmidi;
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\libs\rtmidi;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\addons\ofxMidi\src;..\..\..\addons\ofxMidi\src\desktop;..\..\..\addons\ofxMidi\src\ios;..\..\..\addons\ofxMidi\libs\pgmidi;..\..\..\addons\ofxMidi\libs\rtmidi;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
@@ -171,12 +156,7 @@ C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\libs\rtm
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <CompileAs>CompileAsCpp</CompileAs>
-      <AdditionalIncludeDirectories>
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\src;
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\src\desktop;
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\src\ios;
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\libs\pgmidi;
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\libs\rtmidi;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\addons\ofxMidi\src;..\..\..\addons\ofxMidi\src\desktop;..\..\..\addons\ofxMidi\src\ios;..\..\..\addons\ofxMidi\libs\pgmidi;..\..\..\addons\ofxMidi\libs\rtmidi;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>

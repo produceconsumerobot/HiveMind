@@ -95,12 +95,7 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>..\..\..\addons\ofxBiquadFilter\src;..\..\..\addons\ofxFft\src;..\..\..\addons\ofxFft\libs\fftw\include;..\..\..\addons\ofxFft\libs\kiss;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxOpenBciWifi\src;..\..\..\addons\ofxOscilloscope\src;..\..\..\addons\ofxThreadedLogger\src;C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxNetwork\src;
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\src;
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\src\desktop;
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\src\ios;
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\libs\pgmidi;
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\libs\rtmidi;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\addons\ofxBiquadFilter\src;..\..\..\addons\ofxFft\src;..\..\..\addons\ofxFft\libs\fftw\include;..\..\..\addons\ofxFft\libs\kiss;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxOpenBciWifi\src;..\..\..\addons\ofxOscilloscope\src;..\..\..\addons\ofxThreadedLogger\src;..\..\..\addons\ofxNetwork\src;..\..\..\addons\ofxMidi\src;..\..\..\addons\ofxMidi\src\desktop;..\..\..\addons\ofxMidi\src\ios;..\..\..\addons\ofxMidi\libs\pgmidi;..\..\..\addons\ofxMidi\libs\rtmidi;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
@@ -119,12 +114,7 @@ C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\libs\rtm
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>..\..\..\addons\ofxBiquadFilter\src;..\..\..\addons\ofxFft\src;..\..\..\addons\ofxFft\libs\fftw\include;..\..\..\addons\ofxFft\libs\kiss;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxOpenBciWifi\src;..\..\..\addons\ofxOscilloscope\src;..\..\..\addons\ofxThreadedLogger\src;C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxNetwork\src;
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\src;
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\src\desktop;
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\src\ios;
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\libs\pgmidi;
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\libs\rtmidi;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\addons\ofxBiquadFilter\src;..\..\..\addons\ofxFft\src;..\..\..\addons\ofxFft\libs\fftw\include;..\..\..\addons\ofxFft\libs\kiss;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxOpenBciWifi\src;..\..\..\addons\ofxOscilloscope\src;..\..\..\addons\ofxThreadedLogger\src;..\..\..\addons\ofxNetwork\src;..\..\..\addons\ofxMidi\src;..\..\..\addons\ofxMidi\src\desktop;..\..\..\addons\ofxMidi\src\ios;..\..\..\addons\ofxMidi\libs\pgmidi;..\..\..\addons\ofxMidi\libs\rtmidi;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -143,12 +133,7 @@ C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\libs\rtm
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>..\..\..\addons\ofxBiquadFilter\src;..\..\..\addons\ofxFft\src;..\..\..\addons\ofxFft\libs\fftw\include;..\..\..\addons\ofxFft\libs\kiss;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxOpenBciWifi\src;..\..\..\addons\ofxOscilloscope\src;..\..\..\addons\ofxThreadedLogger\src;C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxNetwork\src;
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\src;
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\src\desktop;
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\src\ios;
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\libs\pgmidi;
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\libs\rtmidi;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\addons\ofxBiquadFilter\src;..\..\..\addons\ofxFft\src;..\..\..\addons\ofxFft\libs\fftw\include;..\..\..\addons\ofxFft\libs\kiss;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxOpenBciWifi\src;..\..\..\addons\ofxOscilloscope\src;..\..\..\addons\ofxThreadedLogger\src;..\..\..\addons\ofxNetwork\src;..\..\..\addons\ofxMidi\src;..\..\..\addons\ofxMidi\src\desktop;..\..\..\addons\ofxMidi\src\ios;..\..\..\addons\ofxMidi\libs\pgmidi;..\..\..\addons\ofxMidi\libs\rtmidi;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -170,12 +155,7 @@ C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\libs\rtm
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>..\..\..\addons\ofxBiquadFilter\src;..\..\..\addons\ofxFft\src;..\..\..\addons\ofxFft\libs\fftw\include;..\..\..\addons\ofxFft\libs\kiss;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxOpenBciWifi\src;..\..\..\addons\ofxOscilloscope\src;..\..\..\addons\ofxThreadedLogger\src;C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxNetwork\src;
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\src;
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\src\desktop;
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\src\ios;
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\libs\pgmidi;
-C:\priv\gd\Dropbox\LocalDev\Sean\OF\of_v0.9.8_vs_release\addons\ofxMidi\libs\rtmidi;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\addons\ofxBiquadFilter\src;..\..\..\addons\ofxFft\src;..\..\..\addons\ofxFft\libs\fftw\include;..\..\..\addons\ofxFft\libs\kiss;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxOpenBciWifi\src;..\..\..\addons\ofxOscilloscope\src;..\..\..\addons\ofxThreadedLogger\src;..\..\..\addons\ofxNetwork\src;..\..\..\addons\ofxMidi\src;..\..\..\addons\ofxMidi\src\desktop;..\..\..\addons\ofxMidi\src\ios;..\..\..\addons\ofxMidi\libs\pgmidi;..\..\..\addons\ofxMidi\libs\rtmidi;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
