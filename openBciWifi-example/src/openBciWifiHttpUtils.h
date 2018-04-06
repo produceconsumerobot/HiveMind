@@ -38,7 +38,7 @@ static void openBciWifiTcp(string computerIp, int tcpPort, string openBciWifiIp)
 		+ "\\\"port\\\":" + ofToString(tcpPort) + ","
 		+ "\\\"output\\\":\\\"json\\\","
 		+ "\\\"delimiter\\\":true,"
-		+ "\\\"latency\\\":10000,"
+		+ "\\\"latency\\\":20000,"
 		+ "\\\"timestamps\\\":false,"
 		+ "\\\"sample_numbers\\\":true"
 		+ "}";
@@ -77,9 +77,27 @@ static void openBciWifiStop(string openBciWifiIp)
 	cout << pyCmd << endl;
 	system(pyCmd.c_str());
 }
+static void openBciWifiSendCommand(string openBciWifiIp, string command)
+{
+	// Send specified command to openBci Cyton boards
+	// {'command': command}
+	string pyCmd = "";
+#if defined(TARGET_WIN32) 
+	pyCmd = pyCmd + "start ";
+#endif
+	pyCmd = pyCmd + "python " + ofToDataPath("httpPostJson.py") + " http://" + openBciWifiIp + "/command"
+		+ " {"
+		+ "\\\"command\\\":\\\"" + command + "\\\""
+		+ "}";
+#if defined(TARGET_OSX) || defined(TARGET_LINUX) 
+	pyCmd = pyCmd + " &";
+#endif
+	cout << pyCmd << endl;
+	system(pyCmd.c_str());
+}
 static void openBciWifiSquareWaveOn(string openBciWifiIp)
 {
-	// Turn on raw data sending from openBci Cyton boards
+	// Turn on square wave from openBci Cyton boards
 	// {'command': '-'}
 	string pyCmd = "";
 #if defined(TARGET_WIN32) 
@@ -87,7 +105,7 @@ static void openBciWifiSquareWaveOn(string openBciWifiIp)
 #endif
 	pyCmd = pyCmd + "python " + ofToDataPath("httpPostJson.py") + " http://" + openBciWifiIp + "/command"
 		+ " {"
-		+ "\\\"command\\\":\\\"-\\\""
+		+ "\\\"command\\\":\\\"[\\\""
 		+ "}";
 #if defined(TARGET_OSX) || defined(TARGET_LINUX) 
 	pyCmd = pyCmd + " &";

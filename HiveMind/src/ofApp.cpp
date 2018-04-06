@@ -5,14 +5,13 @@
 void ofApp::setup(){
 
 	tcpPort = 3000;
-	computerIp = "192.168.1.102";
-	openBciIps.push_back("192.168.1.100");
+	computerIp = "192.168.1.100";
+	openBciIps.push_back("192.168.1.102");
 	openBciIps.push_back("192.168.1.101");
 
 	//hiveMind.setTcpPort(tcpPort);
 	reTcpDelay = 10 * 1000;
 	resetBandDataTimer.set(5000);
-
 
 	nHeadsets = 2;
 	swapHeadsets = false;
@@ -52,6 +51,9 @@ void ofApp::setup(){
 	riskScreen.load("screens/RiskScreen.png");
 	descriptionScreen.load("screens/DescriptionScreen.png");
 	creditsScreen.load("screens/CreditsScreen.png");
+
+	introTimers.push_back(0.5 * 60 * 1000);
+	introTimers.push_back(0.5 * 60 * 1000);
 
 	flashState0 = 3;
 	flashTimers.push_back(1.5 * 60 *1000);	// Left (Sean)

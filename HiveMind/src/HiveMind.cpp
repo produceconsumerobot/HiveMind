@@ -17,6 +17,7 @@ HiveMind::HiveMind(int tcpPort)
 
 	_openBci.enableLPFilter(30);
 	_openBci.enableNotchFilter(50);
+	_openBci.enableHPFilter(1);
 
 	_nHeadsets = 2;
 

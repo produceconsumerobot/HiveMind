@@ -276,8 +276,46 @@ void ofApp::keyReleased(int key){
 		// Turn on square wave data sending from openBci Cyton boards
 		for each (string ip in openBciIps)
 		{
-			openBciWifiSquareWaveOn(ip);
+			openBciWifiSendCommand(ip, "-");
 		}
+	}
+	if (key == '=')
+	{
+		// Turn on square wave data sending from openBci Cyton boards
+		for each (string ip in openBciIps)
+		{
+			openBciWifiSendCommand(ip, "=");
+		}
+	}
+	if (key == 'h')
+	{
+		// Disable High-pass filter
+		openBci.disableHPFilter();
+	}
+	if (key == 'H')
+	{
+		// Enable High-pass filter
+		openBci.enableHPFilter(1.f);
+	}
+	if (key == 'l')
+	{
+		// Disable High-pass filter
+		openBci.disableLPFilter();
+	}
+	if (key == 'L')
+	{
+		// Enable High-pass filter
+		openBci.enableLPFilter(50.f);
+	}
+	if (key == 'n')
+	{
+		// Disable High-pass filter
+		openBci.disableNotchFilter();
+	}
+	if (key == 'N')
+	{
+		// Enable High-pass filter
+		openBci.enableNotchFilter(60.f);
 	}
 }
 

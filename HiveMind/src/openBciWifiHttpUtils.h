@@ -17,17 +17,6 @@
 
 static void openBciWifiTcp(string computerIp, int tcpPort, string openBciWifiIp)
 {
-
-	// Send desired parameters to setup openBciWifi boards via http post
-	//{
-	//	"ip": "192.168.1.100",
-	//	"port" : 3000,
-	//	"output" : "json",
-	//	"delimiter" : true,
-	//	"latency" : 15000,
-	//	"timestamps" : false,
-	//	"sample_numbers" : true
-	//}
 	string pyCmd = "";
 #if defined(TARGET_WIN32) 
 	pyCmd = pyCmd + "start "; 
@@ -36,9 +25,9 @@ static void openBciWifiTcp(string computerIp, int tcpPort, string openBciWifiIp)
 		+ " {"
 		+ "\\\"ip\\\":\\\"" + computerIp + "\\\","
 		+ "\\\"port\\\":" + ofToString(tcpPort) + ","
-		+ "\\\"output\\\":\\\"json\\\","
+		+ "\\\"output\\\":\\\"raw\\\","
 		+ "\\\"delimiter\\\":true,"
-		+ "\\\"latency\\\":10000,"
+		+ "\\\"latency\\\":20000,"
 		+ "\\\"timestamps\\\":false,"
 		+ "\\\"sample_numbers\\\":true"
 		+ "}";

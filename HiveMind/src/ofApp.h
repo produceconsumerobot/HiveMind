@@ -65,6 +65,7 @@ class ofApp : public ofBaseApp{
 		ofImage creditsScreen;
 
 		vector<ofxTimerMillis> flashTimers;
+		vector<ofxTimerMillis> introTimers;
 
 		int flashState0;
 
@@ -90,4 +91,6 @@ class ofApp : public ofBaseApp{
 		ofPoint winSize;
 
 		bool oscilloscopesOn;
+
+		int timerCounter;
 };
