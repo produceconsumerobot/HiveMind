@@ -93,4 +93,7 @@ class ofApp : public ofBaseApp{
 		bool oscilloscopesOn;
 
 		int timerCounter;
+
+		float imageYOffset;
+		float imageScaler2;
 };

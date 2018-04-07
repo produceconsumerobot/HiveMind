@@ -16,6 +16,9 @@ void ofApp::setup(){
 	nHeadsets = 2;
 	swapHeadsets = false;
 
+	imageYOffset = 0;
+	imageScaler2 = 1;
+
 	printRates = true;
 
 	ofSetFrameRate(targetFrameRate);
@@ -234,12 +237,12 @@ void ofApp::draw(){
 		// Title screen
 		ofSetColor(0, 0, 0, overlayAlpha);
 		ofDrawRectangle(0, 0, ofGetWindowWidth(), ofGetWindowHeight());
-		float imageScaler = ofGetWindowHeight() / titleScreen.getHeight();
+		float imageScaler = ofGetWindowHeight() / titleScreen.getHeight() * imageScaler2;
 		float imageXOffset = (ofGetWindowWidth() - titleScreen.getWidth() * imageScaler) / 2;
 		ofPushMatrix();
 		ofScale(imageScaler, imageScaler);
 		ofSetColor(255, 255, 255);
-		titleScreen.draw(imageXOffset,0);
+		titleScreen.draw(imageXOffset / imageScaler, imageYOffset);
 		ofPopMatrix();
 		drawOn.at(0) = false;
 		drawOn.at(1) = false;
@@ -249,12 +252,12 @@ void ofApp::draw(){
 		// risk screen
 		ofSetColor(0, 0, 0, overlayAlpha);
 		ofDrawRectangle(0, 0, ofGetWindowWidth(), ofGetWindowHeight());
-		float imageScaler = ofGetWindowHeight() / titleScreen.getHeight();
+		float imageScaler = ofGetWindowHeight() / titleScreen.getHeight() * imageScaler2;
 		float imageXOffset = (ofGetWindowWidth() - titleScreen.getWidth() * imageScaler) / 2;
 		ofPushMatrix();
 		ofScale(imageScaler, imageScaler);
 		ofSetColor(255, 255, 255);
-		riskScreen.draw(imageXOffset, 0);
+		riskScreen.draw(imageXOffset / imageScaler, imageYOffset);
 		ofPopMatrix();
 		drawOn.at(0) = false;
 		drawOn.at(1) = false;
@@ -264,12 +267,12 @@ void ofApp::draw(){
 		// description screen
 		ofSetColor(0, 0, 0, overlayAlpha);
 		ofDrawRectangle(0, 0, ofGetWindowWidth(), ofGetWindowHeight());
-		float imageScaler = ofGetWindowHeight() / titleScreen.getHeight();
+		float imageScaler = ofGetWindowHeight() / titleScreen.getHeight() * imageScaler2;
 		float imageXOffset = (ofGetWindowWidth() - titleScreen.getWidth() * imageScaler) / 2;
 		ofPushMatrix();
 		ofScale(imageScaler, imageScaler);
 		ofSetColor(255, 255, 255);
-		descriptionScreen.draw(imageXOffset, 0);
+		descriptionScreen.draw(imageXOffset / imageScaler, imageYOffset);
 		ofPopMatrix();
 		drawOn.at(0) = false;
 		drawOn.at(1) = false;
@@ -451,12 +454,12 @@ void ofApp::draw(){
 		ofSetColor(0, 0, 0, overlayAlpha);
 		ofDrawRectangle(0, 0, ofGetWindowWidth(), ofGetWindowHeight());
 		ofPopStyle();
-		float imageScaler = ofGetWindowHeight() / titleScreen.getHeight();
+		float imageScaler = ofGetWindowHeight() / titleScreen.getHeight() * imageScaler2;
 		float imageXOffset = (ofGetWindowWidth() - titleScreen.getWidth() * imageScaler) / 2;
 		ofSetColor(255, 255, 255);
 		ofPushMatrix();
 		ofScale(imageScaler, imageScaler);
-		creditsScreen.draw(imageXOffset, 0);
+		creditsScreen.draw(imageXOffset / imageScaler, imageYOffset);
 		ofPopMatrix();
 		drawOn.at(0) = false;
 		drawOn.at(1) = false;
@@ -707,6 +710,22 @@ void ofApp::keyReleased(int key) {
 	if (key == 'o')
 	{
 		oscilloscopesOn = !oscilloscopesOn;
+	}
+	// Make images smaller
+	if (key == '<') {
+		imageScaler2 = imageScaler2 / 1.1;
+	}
+	// Make images larger
+	if (key == '>') {
+		imageScaler2 = imageScaler2 * 1.1;
+	}
+	// Move images up
+	if (key == '.') {
+		imageYOffset = imageYOffset - 10;
+	}
+	// Move images Down
+	if (key == ',') {
+		imageYOffset = imageYOffset + 10;
 	}
 }
 
