@@ -7,7 +7,7 @@ void ofApp::setup(){
 	tcpPort = 3000;
 	computerIp = "192.168.1.100";
 	openBciIps.push_back("192.168.1.102");
-	openBciIps.push_back("192.168.1.101");
+	openBciIps.push_back("192.168.1.103");
 
 	//hiveMind.setTcpPort(tcpPort);
 	reTcpDelay = 10 * 1000;
