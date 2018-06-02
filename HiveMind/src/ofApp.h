@@ -45,6 +45,7 @@ class ofApp : public ofBaseApp{
 		vector<bool> drawOn;
 		vector<int> frameCount;
 		vector<int> targetFrameCount;
+		vector<int> dominantBand;
 		vector<bool> drawWhiteOn;
 
 		//vector<ofRectangle> drawRect;
@@ -55,7 +56,7 @@ class ofApp : public ofBaseApp{
 		ofxMidiOut midiout;
 		bool sendMidi;
 		int midiChannel;
-		vector<int> midiId;
+		vector<vector<int>> midiId;
 		int midiValue;
 
 		StateMachine states;

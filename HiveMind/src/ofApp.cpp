@@ -4,10 +4,12 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
 
+	ofSetLogLevel(OF_LOG_NOTICE);
+
 	tcpPort = 3000;
 	computerIp = "192.168.1.100";
+	openBciIps.push_back("192.168.1.101");
 	openBciIps.push_back("192.168.1.102");
-	openBciIps.push_back("192.168.1.103");
 
 	//hiveMind.setTcpPort(tcpPort);
 	reTcpDelay = 10 * 1000;
@@ -36,6 +38,7 @@ void ofApp::setup(){
 	changeFrameCountMax = 14 * 1000000;	// microseconds
 
 	int midiId0 = 60;
+	midiId.resize(nHeadsets);
 	for (int h = 0; h < nHeadsets; h++)
 	{
 		lastDrawMicros.push_back(ofGetElapsedTimeMicros());
@@ -46,7 +49,11 @@ void ofApp::setup(){
 		changeFrameCountInterval.push_back(ofRandom(changeFrameCountMin, changeFrameCountMax));
 		drawWhiteOn.push_back(true);
 		drawOn.push_back(true);
-		midiId.push_back(midiId0 + h);
+		dominantBand.push_back(0);
+		for (int b = 0; b < hiveMind.getNumEegBands(); b++)
+		{
+			midiId.at(h).push_back(midiId0 + b * nHeadsets + h);
+		}
 	}
 
 	// Static Screens
@@ -157,6 +164,9 @@ void ofApp::update(){
 			if (temp >= 0)
 			{
 				targetFrameCount.at(h) = temp;
+				midiout.sendNoteOff(midiChannel, midiId.at(h).at(dominantBand.at(h)), midiValue);
+				ofLogVerbose() << "sendNoteOff midiId=" << midiId.at(h).at(dominantBand.at(h));
+				dominantBand.at(h) = hiveMind.getDominantBand(h);
 				cout << "Set frame count h" << h << " = " << temp << endl;
 				vector<float> eegBandData = hiveMind.getEegBandData(h);
 				vector<float> eegBaselineBandData = hiveMind.getEegBaselineBandData(h);
@@ -468,10 +478,39 @@ void ofApp::draw(){
 	// ** Handle flashing ** 
 	for (int h = 0; h < nHeadsets; h++)
 	{
+		int hDraw = h;
+		if (swapHeadsets)
+		{
+			hDraw = (h + 1) % 2;
+		}
 		if (frameCount.at(h) >= targetFrameCount.at(h))
 		{
 			frameCount.at(h) = 0;
 			drawWhiteOn.at(h) = !drawWhiteOn.at(h);
+			if (drawWhiteOn.at(h) && drawOn.at(h)) // white screen!
+			{
+				if (sendMidi)
+				{
+					//for (int b = 0; b < hiveMind.getNumEegBands(); b++) {
+						//midiout.sendNoteOff(midiChannel, midiId.at(hDraw).at(b), midiValue);
+						//ofLogVerbose() << "sendNoteOff midiId=" << midiId.at(hDraw).at(b) << endl;
+					//}
+					midiout.sendNoteOn(midiChannel, midiId.at(hDraw).at(dominantBand.at(h)), midiValue);
+					ofLogVerbose() << "sendNoteOn midiId=" << midiId.at(hDraw).at(dominantBand.at(h));
+				}
+			} 
+			else
+			{
+				if (sendMidi)
+				{
+					//for (int b = 0; b < hiveMind.getNumEegBands(); b++) {
+						//midiout.sendNoteOff(midiChannel, midiId.at(hDraw).at(b), midiValue);
+						//ofLogVerbose() << "sendNoteOff midiId=" << midiId.at(hDraw).at(b);
+					//}
+					midiout.sendNoteOff(midiChannel, midiId.at(hDraw).at(dominantBand.at(h)), midiValue);
+					ofLogVerbose() << "sendNoteOff midiId=" << midiId.at(hDraw).at(dominantBand.at(h));
+				}
+			}
 			if (printRates)
 			{
 				drawDelay.at(h) = ofGetElapsedTimeMicros() - lastDrawMicros.at(h);
@@ -482,28 +521,15 @@ void ofApp::draw(){
 		{
 			frameCount.at(h)++;
 		}
-		int hDraw = h;
-		if (swapHeadsets)
-		{
-			hDraw = (h + 1) % 2;
-		}
 		if (drawWhiteOn.at(h) && drawOn.at(h))
 		{
 			ofSetColor(255, 255, 255);
 			ofDrawRectangle((float)hDraw * ofGetWidth() / nHeadsets, 0.f,
 				(float)ofGetWidth() / nHeadsets, ofGetHeight());
-			if (sendMidi)
-			{
-				midiout.sendNoteOn(midiChannel, midiId.at(hDraw), midiValue);
-			}
 		}
 		else
 		{
 			//ofSetColor(0, 0, 0);
-			if (sendMidi)
-			{
-				midiout.sendNoteOff(midiChannel, midiId.at(hDraw), midiValue);
-			}
 		}
 	}
 
@@ -780,7 +806,9 @@ void ofApp::exit()
 	{
 		for (int h = 0; h < nHeadsets; h++)
 		{
-			midiout.sendNoteOff(midiChannel, midiId.at(h), midiValue);
+			for (int b = 0; b < hiveMind.getNumEegBands(); b++) {
+				midiout.sendNoteOff(midiChannel, midiId.at(h).at(b), midiValue);
+			}
 		}
 		midiout.closePort();
 	}

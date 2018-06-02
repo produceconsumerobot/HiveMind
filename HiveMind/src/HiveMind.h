@@ -60,6 +60,7 @@ public:
 
 	void setEegChannels(int headset, vector<int> channels);
 	void setEegBands(vector<vector<float>> eegBands);
+	int getNumEegBands();
 
 	int getDominantBand(int headset);
 	int getFrameCount(int headset, int frameRate);

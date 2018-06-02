@@ -14,16 +14,18 @@ void ofApp::setup(){
 	frameCount1 = 0;
 	targetFrameCount1 = 1;
 	drawWhiteOn1 = true;
+	freqBand1 = 3;
 
 	frameCount2 = 0;
 	targetFrameCount2 = 1;
 	drawWhiteOn2 = true;
+	freqBand2 = 3;
 
 	draw1 = true;
 	draw2 = false;
 
-	midiId0 = 60;
-	midiId1 = midiId0 + 1;
+	midiId1 = 60;
+	//midiId1 = midiId0 + 1;
 
 	// ** Midi **
 	sendMidi = true;
@@ -61,7 +63,7 @@ void ofApp::draw(){
 		ofSetColor(255, 255, 255);
 		if (sendMidi)
 		{
-			midiout.sendNoteOn(midiChannel, midiId0, midiValue);
+			midiout.sendNoteOn(midiChannel, midiId1 + freqBand1 * 2, midiValue);
 		}
 	}
 	else
@@ -69,7 +71,7 @@ void ofApp::draw(){
 		ofSetColor(0, 0, 0);
 		if (sendMidi)
 		{
-			midiout.sendNoteOff(midiChannel, midiId0, midiValue);
+			midiout.sendNoteOff(midiChannel, midiId1 + freqBand1 * 2, midiValue);
 		}
 	}
 	ofDrawRectangle(0, 0, ofGetWidth() / 2, ofGetHeight());
@@ -94,7 +96,7 @@ void ofApp::draw(){
 		ofSetColor(255, 255, 255);
 		if (sendMidi)
 		{
-			midiout.sendNoteOn(midiChannel, midiId1, midiValue);
+			midiout.sendNoteOn(midiChannel, midiId1 + freqBand2 * 2 + 1, midiValue);
 		}
 	}
 	else
@@ -102,7 +104,7 @@ void ofApp::draw(){
 		ofSetColor(0, 0, 0);
 		if (sendMidi)
 		{
-			midiout.sendNoteOff(midiChannel, midiId1, midiValue);
+			midiout.sendNoteOff(midiChannel, midiId1 + freqBand2 * 2 + 1, midiValue);
 		}
 	}
 	ofDrawRectangle(ofGetWidth() / 2, 0, ofGetWidth() / 2, ofGetHeight());
@@ -133,42 +135,62 @@ void ofApp::keyReleased(int key){
 	if (key == '1')
 	{
 		targetFrameCount1 = 9;		// Delta 3Hz
+		midiout.sendNoteOff(midiChannel, midiId1 + freqBand1 * 2, midiValue);
+		freqBand1 = -1;
 	}
 	if (key == '2')
 	{
 		targetFrameCount1 = 4;		// Theta 6Hz
+		midiout.sendNoteOff(midiChannel, midiId1 + freqBand1 * 2, midiValue);
+		freqBand1 = 0;
 	}
 	if (key == '3')
 	{
 		targetFrameCount1 = 2;		// Alpha 10Hz
+		midiout.sendNoteOff(midiChannel, midiId1 + freqBand1 * 2, midiValue);
+		freqBand1 = 1;
 	}
 	if (key == '4')
 	{
 		targetFrameCount1 = 1;		// Beta 15Hz
+		midiout.sendNoteOff(midiChannel, midiId1 + freqBand1 * 2, midiValue);
+		freqBand1 = 2;
 	}
 	if (key == '5')
 	{
 		targetFrameCount1 = 0;		// Gamma 30Hz
+		midiout.sendNoteOff(midiChannel, midiId1 + freqBand1 * 2, midiValue);
+		freqBand1 = 3;
 	}
 	if (key == 'q')
 	{
 		targetFrameCount2 = 9;		// Delta 3Hz
+		midiout.sendNoteOff(midiChannel, midiId1 + freqBand2 * 2 + 1, midiValue);
+		freqBand2 = -1;
 	}
 	if (key == 'w')
 	{
 		targetFrameCount2 = 4;		// Theta 6Hz
+		midiout.sendNoteOff(midiChannel, midiId1 + freqBand2 * 2 + 1, midiValue);
+		freqBand2 = 0;
 	}
 	if (key == 'e')
 	{
 		targetFrameCount2 = 2;		// Alpha 10Hz
+		midiout.sendNoteOff(midiChannel, midiId1 + freqBand2 * 2 + 1, midiValue);
+		freqBand2 = 1;
 	}
 	if (key == 'r')
 	{
 		targetFrameCount2 = 1;		// Beta 15Hz
+		midiout.sendNoteOff(midiChannel, midiId1 + freqBand2 * 2 + 1, midiValue);
+		freqBand2 = 2;
 	}
 	if (key == 't')
 	{
 		targetFrameCount2 = 0;		// Gamma 30Hz
+		midiout.sendNoteOff(midiChannel, midiId1 + freqBand2 * 2 + 1, midiValue);
+		freqBand2 = 3;
 	}
 	if (key == 'f')
 	{
@@ -245,8 +267,12 @@ void ofApp::exit()
 {
 	if (midiout.isOpen())
 	{
-		midiout.sendNoteOff(midiChannel, midiId0, midiValue);
-		midiout.sendNoteOff(midiChannel, midiId1, midiValue);
+		for (int h = 0; h < 2; h++) {
+			for (int b = -1; b < 4; b++) {
+				midiout.sendNoteOff(midiChannel, midiId1 + b * 2 + h, midiValue);
+				midiout.sendNoteOff(midiChannel, midiId1 + b * 2 + h, midiValue);
+			}
+		}
 		midiout.closePort();
 	}
 

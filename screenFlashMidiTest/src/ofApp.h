@@ -37,11 +37,13 @@ class ofApp : public ofBaseApp{
 		int frameCount1;
 		int targetFrameCount1;
 		bool drawWhiteOn1;
+		int freqBand1;
 
 		bool draw2;
 		int frameCount2;
 		int targetFrameCount2;
 		bool drawWhiteOn2;
+		int freqBand2;
 
 		bool printRates;
 
@@ -49,7 +51,7 @@ class ofApp : public ofBaseApp{
 		ofxMidiOut midiout;
 		bool sendMidi;
 		int midiChannel;
-		int midiId0;
+		//int midiId0;
 		int midiId1;
 		int midiValue;
 };

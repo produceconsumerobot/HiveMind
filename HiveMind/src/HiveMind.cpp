@@ -83,6 +83,11 @@ void HiveMind::setEegBands(vector<vector<float>> eegBands)
 	_eegBands = eegBands;
 }
 
+int HiveMind::getNumEegBands()
+{
+	return _eegBands.size();
+}
+
 void HiveMind::threadedFunction()
 {
 	while (isThreadRunning()) {
