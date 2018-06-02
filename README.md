@@ -32,4 +32,4 @@ Hive Mind is a peek into the future of augmented cooperative cognition. Pulses o
 * '5' Black -> Credits
 * [BACKSPACE]: Toggle midi out
 * 'u', 'i', 'o': Set person 1 theta, alpha, beta
-* 'j', 'k', 'l': Set person 1 theta, alpha, beta
+* 'j', 'k', 'l': Set person 2 theta, alpha, beta
