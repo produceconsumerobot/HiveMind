@@ -296,6 +296,7 @@ void ofApp::draw(){
 		if (flashTimers.at(0).isElapsed())
 		{
 			states.next();
+			allNotesOff();
 			flashTimers.at(1).start();
 		}
 	}
@@ -307,6 +308,7 @@ void ofApp::draw(){
 		if (flashTimers.at(1).isElapsed())
 		{
 			states.next();
+			allNotesOff();
 			flashTimers.at(2).start();
 		}
 	}
@@ -318,6 +320,7 @@ void ofApp::draw(){
 		if (flashTimers.at(2).isElapsed())
 		{
 			states.next();
+			allNotesOff();
 			flashTimers.at(3).start();
 		}
 	}
@@ -329,6 +332,7 @@ void ofApp::draw(){
 		if (flashTimers.at(3).isElapsed())
 		{
 			states.next();
+			allNotesOff();
 			flashTimers.at(4).start();
 		}
 	}
@@ -340,6 +344,7 @@ void ofApp::draw(){
 		if (flashTimers.at(4).isElapsed())
 		{
 			states.next();
+			allNotesOff();
 			flashTimers.at(5).start();
 		}
 	}
@@ -351,6 +356,7 @@ void ofApp::draw(){
 		if (flashTimers.at(5).isElapsed())
 		{
 			states.next();
+			allNotesOff();
 			flashTimers.at(6).start();
 		}
 	}
@@ -362,6 +368,7 @@ void ofApp::draw(){
 		if (flashTimers.at(6).isElapsed())
 		{
 			states.next();
+			allNotesOff();
 			flashTimers.at(7).start();
 		}
 	}
@@ -373,6 +380,7 @@ void ofApp::draw(){
 		if (flashTimers.at(7).isElapsed())
 		{
 			states.next();
+			allNotesOff();
 			flashTimers.at(8).start();
 		}
 	}
@@ -384,6 +392,7 @@ void ofApp::draw(){
 		if (flashTimers.at(8).isElapsed())
 		{
 			states.next();
+			allNotesOff();
 			flashTimers.at(9).start();
 		}
 	}
@@ -395,6 +404,7 @@ void ofApp::draw(){
 		if (flashTimers.at(9).isElapsed())
 		{
 			states.next();
+			allNotesOff();
 			flashTimers.at(10).start();
 		}
 	}
@@ -406,6 +416,7 @@ void ofApp::draw(){
 		if (flashTimers.at(10).isElapsed())
 		{
 			states.next();
+			allNotesOff();
 			flashTimers.at(11).start();
 		}
 	}
@@ -417,6 +428,7 @@ void ofApp::draw(){
 		if (flashTimers.at(11).isElapsed())
 		{
 			states.next();
+			allNotesOff();
 			flashTimers.at(12).start();
 		}
 	}
@@ -428,6 +440,7 @@ void ofApp::draw(){
 		if (flashTimers.at(12).isElapsed())
 		{
 			states.next();
+			allNotesOff();
 			flashTimers.at(13).start();
 		}
 	}
@@ -439,6 +452,7 @@ void ofApp::draw(){
 		if (flashTimers.at(13).isElapsed())
 		{
 			states.next();
+			allNotesOff();
 			flashTimers.at(14).start();
 		}
 	}
@@ -455,6 +469,7 @@ void ofApp::draw(){
 		if (flashTimers.at(14).isElapsed())
 		{
 			states.next();
+			allNotesOff();
 		}
 	}
 	else if (states.state == flashState0 + 15)
@@ -593,6 +608,7 @@ void ofApp::keyReleased(int key) {
 	if (key == ' ')
 	{
 		states.next();
+		allNotesOff();
 		if (states.state == 1)
 		{
 			hiveMind.resetBandData();
@@ -624,6 +640,7 @@ void ofApp::keyReleased(int key) {
 	}
 	if (key == 't')
 	{
+		// Setup TCP connection with openBci headsets
 		for each (string ip in openBciIps)
 		{
 			openBciWifiTcp(computerIp, tcpPort, ip);
@@ -814,4 +831,18 @@ void ofApp::exit()
 	}
 
 	//hiveMind.waitForThread(true);
+}
+
+void ofApp::allNotesOff()
+{
+	if (sendMidi)
+	{
+		for (int h = 0; h < nHeadsets; h++)
+		{
+			for (int b = 0; b < hiveMind.getNumEegBands(); b++) {
+				midiout.sendNoteOff(midiChannel, midiId.at(h).at(b), midiValue);
+				ofLogVerbose() << "sendNoteOff midiId=" << midiId.at(h).at(b) << endl;
+			}
+		}
+	}
 }
